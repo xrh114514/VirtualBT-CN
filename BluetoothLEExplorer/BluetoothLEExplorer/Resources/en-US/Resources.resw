@@ -211,8 +211,32 @@
   <data name="Str_Event_Type.Text" xml:space="preserve">
     <value>Event Type: </value>
   </data>
+  <data name="Str_ExitHotkeyHint.Text" xml:space="preserve">
+    <value>Click the button, then press the shortcut you want (Ctrl / Alt / Shift may be held). In mouse capture mode that shortcut leaves the capture and is never forwarded to the phone.</value>
+  </data>
+  <data name="Str_ExitHotkeyLabel.Text" xml:space="preserve">
+    <value>Exit mouse capture</value>
+  </data>
+  <data name="Str_ExitHotkeyPress.Content" xml:space="preserve">
+    <value>Press the shortcut…</value>
+  </data>
+  <data name="Str_ExitHotkeyReset.Content" xml:space="preserve">
+    <value>Reset to default</value>
+  </data>
   <data name="Str_Filter.Text" xml:space="preserve">
     <value>Filter: </value>
+  </data>
+  <data name="Str_FullscreenBorderless.Content" xml:space="preserve">
+    <value>Borderless window</value>
+  </data>
+  <data name="Str_FullscreenExclusive.Content" xml:space="preserve">
+    <value>Exclusive (no title bar)</value>
+  </data>
+  <data name="Str_FullscreenModeHint.Text" xml:space="preserve">
+    <value>Exclusive: a borderless topmost window covers the screen with the caption and window buttons removed, so nothing is summoned at the top edge (recommended). Borderless window: the system app-fullscreen mode - most compatible, but on some systems the pointer at the top edge still brings up the title bar. Applied when mouse capture starts; no restart needed.</value>
+  </data>
+  <data name="Str_FullscreenModeLabel.Text" xml:space="preserve">
+    <value>Game-mode fullscreen</value>
   </data>
   <data name="Str_Handle.Text" xml:space="preserve">
     <value>Handle: </value>
@@ -286,8 +310,11 @@
   <data name="Str_Mouse_Capture_Mode.Text" xml:space="preserve">
     <value>Mouse Capture Mode</value>
   </data>
+  <data name="Str_MouseCaptureNoInjector.Text" xml:space="preserve">
+    <value>Cannot move the system pointer (both win32 and inputInjection unavailable): movement will stop at the screen edge.</value>
+  </data>
   <data name="Str_Mouse_keyboard_are_captured_and_forw.Text" xml:space="preserve">
-    <value>Mouse + keyboard are captured and forwarded to the phone · Esc to exit · F1 toggles this hint · Numpad +/- sensitivity</value>
+    <value>Mouse + keyboard are captured and forwarded to the phone · {0} to exit · F1 toggles this hint · Numpad +/- sensitivity</value>
   </data>
   <data name="Str_None.Content" xml:space="preserve">
     <value>None</value>

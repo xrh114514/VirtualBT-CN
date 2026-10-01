@@ -211,8 +211,32 @@
   <data name="Str_Event_Type.Text" xml:space="preserve">
     <value>事件类型：</value>
   </data>
+  <data name="Str_ExitHotkeyHint.Text" xml:space="preserve">
+    <value>点击按钮后按下要使用的快捷键（可含 Ctrl / Alt / Shift）。在鼠标捕获模式下按该键退出，且不会转发到手机。</value>
+  </data>
+  <data name="Str_ExitHotkeyLabel.Text" xml:space="preserve">
+    <value>退出鼠标捕获</value>
+  </data>
+  <data name="Str_ExitHotkeyPress.Content" xml:space="preserve">
+    <value>请按下快捷键…</value>
+  </data>
+  <data name="Str_ExitHotkeyReset.Content" xml:space="preserve">
+    <value>恢复默认</value>
+  </data>
   <data name="Str_Filter.Text" xml:space="preserve">
     <value>过滤：</value>
+  </data>
+  <data name="Str_FullscreenBorderless.Content" xml:space="preserve">
+    <value>无边框窗口全屏</value>
+  </data>
+  <data name="Str_FullscreenExclusive.Content" xml:space="preserve">
+    <value>独占全屏（无标题栏）</value>
+  </data>
+  <data name="Str_FullscreenModeHint.Text" xml:space="preserve">
+    <value>独占全屏：无边框置顶窗口铺满屏幕，标题栏与窗口按钮全部移除，指针顶到屏幕上方不会呼出任何系统界面（推荐）。无边框窗口全屏：系统应用全屏，兼容性最好，但部分系统上指针顶到上边缘仍会带出标题栏。进入鼠标捕获模式时生效，无需重启。</value>
+  </data>
+  <data name="Str_FullscreenModeLabel.Text" xml:space="preserve">
+    <value>游戏模式全屏</value>
   </data>
   <data name="Str_Handle.Text" xml:space="preserve">
     <value>句柄：</value>
@@ -286,8 +310,11 @@
   <data name="Str_Mouse_Capture_Mode.Text" xml:space="preserve">
     <value>鼠标捕获模式</value>
   </data>
+  <data name="Str_MouseCaptureNoInjector.Text" xml:space="preserve">
+    <value>无法移动系统指针（win32 与 inputInjection 均不可用）：指针到屏幕边缘后移动会停止。</value>
+  </data>
   <data name="Str_Mouse_keyboard_are_captured_and_forw.Text" xml:space="preserve">
-    <value>鼠标 + 键盘均已捕获并转发到手机 · Esc 退出全屏 · F1 显示/隐藏本提示 · 小键盘 +/- 调灵敏度</value>
+    <value>鼠标 + 键盘均已捕获并转发到手机 · {0} 退出 · F1 显示/隐藏本提示 · 小键盘 +/- 调灵敏度</value>
   </data>
   <data name="Str_None.Content" xml:space="preserve">
     <value>无</value>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
-  <Identity Name="Microsoft.BluetoothLEExplorer" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.1.0.0" />
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap mp uap3 rescap">
+  <Identity Name="Microsoft.BluetoothLEExplorer" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.2.0.0" />
   <mp:PhoneIdentity PhoneProductId="8fce680c-fda2-4d28-8e68-9bb7d53f192f" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Bluetooth LE Explorer</DisplayName>
@@ -29,6 +29,10 @@
   <Capabilities>
     <Capability Name="internetClient" />
     <uap3:Capability Name="userNotificationListener" />
+    <!-- Needed by the mouse-capture page to pull the system pointer back from
+         the screen edge (InputInjector). Restricted: fine when sideloaded.
+         Must precede DeviceCapability (CT_Capabilities is a strict sequence). -->
+    <rescap:Capability Name="inputInjection" />
     <DeviceCapability Name="bluetooth" />
   </Capabilities>
 </Package>

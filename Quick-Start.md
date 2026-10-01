@@ -38,10 +38,10 @@
 
 | Key | Action |
 |---|---|
-| `Esc` | Leave fullscreen |
+| `Esc` (rebindable in Settings) | Leave fullscreen |
 | `F1` | Show/hide hint overlay |
 | `Numpad + / -` | Sensitivity |
-| Everything else | Sent to the phone |
+| Everything else | Sent to the phone (and never to the PC window) |
 
 ---
 
@@ -58,6 +58,7 @@
 | `RadioNotAvailable` error | **Turn Bluetooth on first**; then close Phone Link / Your Phone |
 | Phone can't see the PC | Make sure advertising is enabled on the PC; tap Scan on the phone |
 | "Pair" says no permission | Normal — wrong direction (see diagram above) |
-| Mouse stops at screen edge | UWP limitation; single-monitor fullscreen is fine |
+| Mouse stops at screen edge | v1.2.0 warps the pointer back automatically; if capture mode reports it cannot move the pointer, note what the status line says (`回中 win32` / `injector` / `none`) and report it |
+| Title bar appears at the top edge | Settings → Game-mode fullscreen → **Exclusive** (no title bar, nothing to summon) |
 
 More in [README → Troubleshooting](README.md#troubleshooting).

@@ -69,14 +69,18 @@ From then on, keystrokes are forwarded to the phone whenever the app window has 
 
 1. Make sure the phone is connected (a device appears in the client list).
 2. Click **“Enter Mouse Capture (Fullscreen)”**.
-3. In the black full-screen view, mouse movement controls the camera and keyboard input is used for movement or actions.
+3. In the black full-screen view, mouse movement controls the camera and keyboard input is used for movement or actions. The left navigation bar collapses automatically so the capture view fills the window.
 
 | Key | Action |
 |---|---|
-| **`Esc`** | Leave full screen (not forwarded to the phone) |
+| **`Esc`** (configurable in Settings) | Leave full screen (not forwarded to the phone) |
 | **`F1`** | Show or hide the hint bar |
 | **`Numpad +` / `-`** | Adjust sensitivity, range 0.1x to 5.0x |
-| Any other key | All forwarded to the phone (including `Tab`, `WASD`, `Shift`, etc.) |
+| Any other key | All forwarded to the phone (including `Tab`, `WASD`, `Shift`, etc.) and never reaching the PC window — no shortcuts, no focus moves |
+
+The exit shortcut can be rebound under **Settings → Exit mouse capture** (Ctrl / Alt / Shift combinations are supported).
+
+The fullscreen presentation can be switched under **Settings → Game-mode fullscreen**: **Exclusive** (a borderless topmost window with no title bar — nothing is summoned at the top edge) or **Borderless window** (the system app-fullscreen mode; on some systems the pointer at the top edge still brings up the title bar).
 
 ### 4. Switch language
 
@@ -121,7 +125,11 @@ This is normal. Phones are generally not connected by the computer as Bluetooth 
 
 ### The mouse stops at the screen edge
 
-UWP has no mouse-capture API. When the pointer reaches the screen boundary it stops reporting relative motion. Single-monitor full-screen use is usually sufficient.
+Since v1.2.0 the capture page warps the pointer back to the centre of its monitor whenever it comes near a window/screen edge, so movement is no longer limited. If entering capture mode shows “Cannot move the system pointer”, the warp is not working (the status line shows which mechanism is active — `win32`, `injector`, or `none`) and the pointer will still stop at the edge; please report what the status line says.
+
+### The pointer at the top brings up the title bar
+
+**Settings → Game-mode fullscreen → Exclusive**: the window then has no title bar at all, so nothing can be summoned at the top edge. If it still happens, please report whether the status line says “独占全屏” (exclusive) or “无边框全屏” (borderless — meaning exclusive mode failed and fell back).
 
 ### The language switch has no effect
 
@@ -210,7 +218,7 @@ Add-AppxPackage -Path deploy\nuget\Microsoft.NET.Native.Framework.1.6.appx
 
 ## Known limitations
 
-- **Mouse capture** derives relative motion from position deltas; it stops when the pointer reaches the screen edge (see troubleshooting).
+- **Mouse capture** derives relative motion from position deltas and warps the pointer back near the screen edge (v1.2.0); if the warp is unavailable it still stops at the edge (see troubleshooting).
 - **Keystrokes are only forwarded while the app window has focus** (game mode is exclusive full screen, so this limitation does not apply there).
 - **Switch controller emulation** (`NXBT` / `JoyControl`) depends on Linux BlueZ and is not available on Windows.
 - **Gamepad** HID reports are not implemented yet (keyboard and mouse only).

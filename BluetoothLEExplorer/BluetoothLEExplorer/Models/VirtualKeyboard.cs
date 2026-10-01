@@ -513,6 +513,39 @@ namespace BluetoothLEExplorer.Models
             }
         }
 
+        /// <summary>
+        /// Releases every key and modifier still held down and pushes the
+        /// resulting empty report. The capture page calls this on the way out so
+        /// the phone is not left with a stuck chord (e.g. Ctrl still held when
+        /// the exit hotkey fired).
+        /// </summary>
+        public void ReleaseAllKeys()
+        {
+            try
+            {
+                lock (m_lock)
+                {
+                    if (!m_initializationFinished)
+                    {
+                        return;
+                    }
+
+                    if (m_currentlyDepressedKeys.Count == 0 && m_currentlyDepressedModifierKeys.Count == 0)
+                    {
+                        return;
+                    }
+
+                    m_currentlyDepressedModifierKeys.Clear();
+                    m_currentlyDepressedKeys.Clear();
+                    SendKeyboardReportLocked();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Failed to release all keys: " + e.Message);
+            }
+        }
+
         private void ChangeKeyState(KeyEvent keyEvent, byte hidUsageScanCode)
         {
             lock (m_lock)
@@ -549,45 +582,51 @@ namespace BluetoothLEExplorer.Models
                     }
                 }
 
-                if (m_hidKeyboardReport.SubscribedClients.Count == 0)
+                SendKeyboardReportLocked();
+            }
+        }
+
+        // Assumes that the lock is being held.
+        private void SendKeyboardReportLocked()
+        {
+            if (m_hidKeyboardReport.SubscribedClients.Count == 0)
+            {
+                Debug.WriteLine("No clients are currently subscribed to the keyboard report.");
+                return;
+            }
+
+            var reportValue = new byte[c_sizeOfKeyboardReportDataInBytes];
+
+            // The first byte of the report data is a modifier key bitfield.
+            reportValue[0] = 0x0;
+            foreach (var modifierKeyPressedScanCode in m_currentlyDepressedModifierKeys)
+            {
+                reportValue[0] |= HidHelper.GetFlagOfModifierKey(modifierKeyPressedScanCode);
+            }
+
+            // The second byte up to the last byte represent one key per byte.
+            int reportIndex = 1;
+            foreach (var keyPressedScanCode in m_currentlyDepressedKeys)
+            {
+                if (reportIndex >= reportValue.Length)
                 {
-                    Debug.WriteLine("No clients are currently subscribed to the keyboard report.");
-                    return;
+                    Debug.WriteLine("Too many keys currently depressed to fit into the report data. Truncating.");
+                    break;
                 }
 
-                var reportValue = new byte[c_sizeOfKeyboardReportDataInBytes];
+                reportValue[reportIndex] = keyPressedScanCode;
+                reportIndex++;
+            }
 
-                // The first byte of the report data is a modifier key bitfield.
-                reportValue[0] = 0x0;
-                foreach (var modifierKeyPressedScanCode in m_currentlyDepressedModifierKeys)
-                {
-                    reportValue[0] |= HidHelper.GetFlagOfModifierKey(modifierKeyPressedScanCode);
-                }
+            if (!reportValue.SequenceEqual(m_lastSentKeyboardReportValue))
+            {
+                Debug.WriteLine("Sending keyboard report value notification with data: " + GetStringFromBuffer(reportValue));
+                reportValue.CopyTo(m_lastSentKeyboardReportValue, 0);
 
-                // The second byte up to the last byte represent one key per byte.
-                int reportIndex = 1;
-                foreach (var keyPressedScanCode in m_currentlyDepressedKeys)
-                {
-                    if (reportIndex >= reportValue.Length)
-                    {
-                        Debug.WriteLine("Too many keys currently depressed to fit into the report data. Truncating.");
-                        break;
-                    }
-
-                    reportValue[reportIndex] = keyPressedScanCode;
-                    reportIndex++;
-                }
-
-                if (!reportValue.SequenceEqual(m_lastSentKeyboardReportValue))
-                {
-                    Debug.WriteLine("Sending keyboard report value notification with data: " + GetStringFromBuffer(reportValue));
-                    reportValue.CopyTo(m_lastSentKeyboardReportValue, 0);
-
-                    // Waiting for this operation to complete is no longer necessary since now ordering of notifications
-                    // is guaranteed for each client. Not waiting for it to complete reduces delays and lags.
-                    // Note that doing this makes us unable to know if the notification failed to be sent.
-                    var asyncOp = m_hidKeyboardReport.NotifyValueAsync(reportValue.AsBuffer());
-                }
+                // Waiting for this operation to complete is no longer necessary since now ordering of notifications
+                // is guaranteed for each client. Not waiting for it to complete reduces delays and lags.
+                // Note that doing this makes us unable to know if the notification failed to be sent.
+                var asyncOp = m_hidKeyboardReport.NotifyValueAsync(reportValue.AsBuffer());
             }
         }
 

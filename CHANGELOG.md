@@ -4,6 +4,47 @@
 
 ---
 
+## [1.2.0] — 2026-10-01
+
+游戏模式（鼠标捕获）的三项改进：键盘完全隔离、移动范围放开、退出快捷键可自定义。
+Three changes to game mode (mouse capture): full keyboard isolation, unbounded pointer movement, and a configurable exit shortcut.
+
+### 变更 / Changed
+
+- **中｜捕获模式下键盘不再影响电脑端窗口**：除退出快捷键外的任何按键（含 `Ctrl+S` 等组合快捷键、`Tab` 焦点切换、文本输入、访问键）都不会再作用于本应用窗口，只转发给手机。
+  仅拦截 `CoreWindow.KeyDown` 不足以挡住 XAML 自身的按键处理；现在在 `CoreWindow.Dispatcher.AcceleratorKeyActivated`（及 `CharacterReceived`）上置 `Handled = true`，按键仍经 `CoreWindow.KeyDown/KeyUp` 按 `KeyStatus.ScanCode` 转发，转发逻辑不变。
+  **EN｜Keyboard input no longer affects the PC window during capture**: every key except the exit shortcut — including chords such as `Ctrl+S`, `Tab` focus moves, text input and access keys — is kept away from this app's window and only forwarded to the phone.
+  Intercepting `CoreWindow.KeyDown` alone does not stop XAML's own key handling; `CoreWindow.Dispatcher.AcceleratorKeyActivated` (and `CharacterReceived`) now set `Handled = true`. Keys are still forwarded through `CoreWindow.KeyDown/KeyUp` using `KeyStatus.ScanCode`, so forwarding itself is unchanged.
+  - 中｜释放按键只对**按下时确实转发过**的键执行，本地吞掉的键（退出快捷键、`F1`、小键盘 `+/-`）不会在手机端产生按下无释放的卡键。离开捕获模式时 `VirtualKeyboard.ReleaseAllKeys()` 统一释放，退出快捷键带的修饰键（如 `Ctrl+E` 的 `Ctrl`）也不会残留在手机上。
+    **EN｜A key release is only forwarded for keys whose press was actually forwarded**, so a locally-consumed key (exit shortcut, `F1`, numpad `+/-`) can no longer leave a stuck key on the phone. `VirtualKeyboard.ReleaseAllKeys()` runs when leaving capture mode, so the exit chord's modifier (e.g. `Ctrl` in `Ctrl+E`) is released too.
+  - 中｜`F1` 显示/隐藏提示时会**返回**而不再转发到手机。此前按下会转发而释放被吞掉，等于在手机上留下一个按住不放的 `F1`。
+    **EN｜`F1` toggling the hint now returns instead of being forwarded.** Previously the press was forwarded while the release was swallowed, leaving `F1` stuck down on the phone.
+
+- **中｜鼠标模拟的移动范围不再受窗口/屏幕大小限制，也不会再呼出标题栏**：指针接近窗口或屏幕边缘（48 DIP）时自动弹回所在显示器中央，视角可以持续转动；弹回产生的跳变不计入位移。弹回经 `user32!SetCursorPos` 精确定位，不经过鼠标加速度缩放。全屏 chrome 设为 `Minimal`，并尝试 `Hidden`（读回确认），指针顶到屏幕上边缘不再带出标题栏。
+  若 user32 不可用则退回 `InputInjector` 绝对定位（需清单声明 `rescap:Capability Name="inputInjection"`，受限能力，侧载可用）；两者都不可用时进入捕获模式会提示「无法移动系统指针」，行为与旧版一致。状态行会显示当前生效的弹回方式（`回中 win32` / `回中 injector` / `回中 none`）。
+  **EN｜Mouse-simulation movement is no longer limited by the window/screen size, and the title bar no longer appears**: when the pointer comes within 48 DIPs of a window or screen edge it is warped to the centre of its monitor, so the camera can keep turning; the jump itself is not counted as movement. The warp goes through `user32!SetCursorPos` and lands exactly, with no mouse-ballistics scaling. The fullscreen chrome is set to `Minimal`, with `Hidden` attempted and read back, so a pointer at the top edge can no longer summon the title bar.
+  If user32 is unavailable the code falls back to absolute `InputInjector` positioning (requires `rescap:Capability Name="inputInjection"` in the manifest — a restricted capability, fine when sideloaded). If neither works, entering capture mode shows “Cannot move the system pointer” and behaviour matches the previous version. The status line always shows which warp is active (`回中 win32` / `回中 injector` / `回中 none`).
+
+### 新增 / Added
+
+- **中｜进入鼠标捕获模式时自动隐藏左侧导航栏**：此前导航栏仍占着窗口左侧——捕获区域铺不满屏幕，指针移到导航按钮上时移动不再转发（点击还会直接导航离开捕获页）。现在进入捕获模式会收起导航面板与汉堡按钮，捕获页铺满整个窗口；退出捕获后原样恢复。
+  **EN｜The left navigation bar is hidden while mouse capture is active**: it used to keep its strip of the window — the capture area did not fill the screen, and pointer movement stopped being forwarded while the pointer was over a nav button (clicking one even navigated away from the page). Entering capture mode now collapses the nav pane and hamburger button so the capture page fills the window; leaving restores both exactly.
+
+- **中｜游戏模式全屏方式可切换（独占全屏 / 无边框窗口全屏）**：设置页新增「游戏模式全屏」。部分系统上无边框窗口全屏时指针顶到屏幕上方仍会带出标题栏，且系统浮层无法完全关闭；现在可改用**独占全屏**——把顶层窗口（UWP 应用由 `ApplicationFrameHost` 托管）改为无边框置顶并铺满整块屏幕，标题栏与最小化/最大化/关闭按钮一并移除，顶部**没有任何可呼出的系统界面**，也不会误点到窗口按钮。
+  独占全屏失败时自动回退到无边框窗口全屏（回退时状态行会标明），两种模式都支持退出快捷键与指针弹回。设置即时生效，下次进入捕获模式时应用，无需重启。
+  **EN｜Game-mode fullscreen is switchable (exclusive / borderless window)**: Settings now has “Game-mode fullscreen”. On some systems the borderless-window fullscreen still summons a title bar from the top edge and the system overlay cannot be turned off completely; **Exclusive** can be used instead — the top-level window (UWP apps are hosted by `ApplicationFrameHost`) is turned into a borderless topmost window covering the whole monitor, with the caption and minimize/maximize/close buttons removed, so there is nothing at the top edge to summon and no window buttons to click by accident.
+  If exclusive mode cannot be applied the app falls back to borderless-window fullscreen (the status line says so). Both modes support the exit shortcut and the pointer warp. The setting takes effect the next time capture mode is entered; no restart is needed.
+
+- **中｜退出鼠标捕获的快捷键可自定义**：设置页新增「退出鼠标捕获」，点击按钮后按下目标键（可含 `Ctrl` / `Alt` / `Shift`）即完成绑定，保存在 `LocalSettings`，「恢复默认」回到 `Esc`。捕获页提示条会显示当前快捷键。默认仍为 `Esc`，与旧版一致。
+  **EN｜The mouse-capture exit shortcut is configurable**: Settings now has “Exit mouse capture” — click the button, press the desired key (optionally with `Ctrl` / `Alt` / `Shift`) to bind it. The choice is stored in `LocalSettings`; “Reset to default” returns to `Esc`. The capture-page hint shows the current shortcut. The default is still `Esc`, matching previous versions.
+
+### 变更 / Changed
+
+- 中｜包版本号变更为 **1.2.0.0**。
+  **EN｜Package version changed to 1.2.0.0**.
+
+---
+
 ## [1.1.0] — 2026-10-01
 
 本节为「连接手机后闪退」问题的根因定位与最终修复。v1.0.1 所含改动属实，但并非该问题的成因。

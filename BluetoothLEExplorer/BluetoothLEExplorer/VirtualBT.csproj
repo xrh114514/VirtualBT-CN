@@ -110,7 +110,9 @@
     <Compile Include="CustomControls\GattLocalCharacteristicControl.xaml.cs">
       <DependentUpon>GattLocalCharacteristicControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CaptureHotkey.cs" />
     <Compile Include="Models\DisposableObservableCollection.cs" />
+    <Compile Include="Models\FullscreenMode.cs" />
     <Compile Include="Models\GattSampleContext.cs" />
     <Compile Include="Models\HidHelper.cs" />
     <Compile Include="Models\ObservableBluetoothLEAdvertisement.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Models\Loc.cs" />
     <Compile Include="Models\LocalizedString.cs" />
     <Compile Include="Models\SafeDispatcher.cs" />
+    <Compile Include="Models\SystemPointer.cs" />
     <Compile Include="Models\VirtualKeyboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdvertisementService\AdvertisementDataTypeService.cs" />

@@ -102,10 +102,44 @@
                                 <ComboBoxItem Content="English" Tag="en-US" />
                             </ComboBox>
                         </StackPanel>
-                        <TextBlock x:Uid="Str_LangRestart" Text="切换语言后应用会自动重启。"
+                        <TextBlock x:Name="LangRestartText" x:Uid="Str_LangRestart" Text="切换语言后应用会自动重启。"
                                    Margin="0,6,0,0" TextWrapping="Wrap"
                                    RelativePanel.AlignLeftWithPanel="True"
                                    RelativePanel.Below="LanguageRow" />
+
+                        <!--  Exit hotkey for the mouse-capture page  -->
+                        <StackPanel x:Name="HotkeyRow" Orientation="Horizontal" Margin="0,16,0,0"
+                                    RelativePanel.AlignLeftWithPanel="True"
+                                    RelativePanel.Below="LangRestartText">
+                            <TextBlock x:Uid="Str_ExitHotkeyLabel"
+                                       VerticalAlignment="Center" Margin="0,0,10,0" />
+                            <Button x:Name="ExitHotkeyButton" MinWidth="150"
+                                    Click="ExitHotkeyButton_Click" />
+                            <Button x:Uid="Str_ExitHotkeyReset"
+                                    Margin="10,0,0,0"
+                                    Click="ExitHotkeyReset_Click" />
+                        </StackPanel>
+                        <TextBlock x:Name="ExitHotkeyHintText" x:Uid="Str_ExitHotkeyHint"
+                                   Margin="0,6,0,0" TextWrapping="Wrap" MaxWidth="560"
+                                   RelativePanel.AlignLeftWithPanel="True"
+                                   RelativePanel.Below="HotkeyRow" />
+
+                        <!--  Fullscreen presentation of the mouse-capture page  -->
+                        <StackPanel x:Name="FullscreenRow" Orientation="Horizontal" Margin="0,16,0,0"
+                                    RelativePanel.AlignLeftWithPanel="True"
+                                    RelativePanel.Below="ExitHotkeyHintText">
+                            <TextBlock x:Uid="Str_FullscreenModeLabel"
+                                       VerticalAlignment="Center" Margin="0,0,10,0" />
+                            <ComboBox x:Name="FullscreenModeCombo" MinWidth="220"
+                                      SelectionChanged="FullscreenModeCombo_SelectionChanged">
+                                <ComboBoxItem x:Uid="Str_FullscreenExclusive" Tag="Exclusive" />
+                                <ComboBoxItem x:Uid="Str_FullscreenBorderless" Tag="Borderless" />
+                            </ComboBox>
+                        </StackPanel>
+                        <TextBlock x:Uid="Str_FullscreenModeHint"
+                                   Margin="0,6,0,0" TextWrapping="Wrap" MaxWidth="560"
+                                   RelativePanel.AlignLeftWithPanel="True"
+                                   RelativePanel.Below="FullscreenRow" />
                     </RelativePanel>
 
                 </ScrollViewer>
