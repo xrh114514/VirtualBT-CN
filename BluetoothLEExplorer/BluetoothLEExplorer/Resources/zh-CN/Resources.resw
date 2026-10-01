@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Str_About.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_10.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_11.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_12.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_2.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_3.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_4.Header" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_5.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_6.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_7.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_8.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_About_9.Label" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Str_Active.Content" xml:space="preserve">
+    <value>主动</value>
+  </data>
+  <data name="Str_Add_Beacon.Content" xml:space="preserve">
+    <value>添加信标</value>
+  </data>
+  <data name="Str_Add_Service.Content" xml:space="preserve">
+    <value>添加服务</value>
+  </data>
+  <data name="Str_Address.Text" xml:space="preserve">
+    <value>地址：</value>
+  </data>
+  <data name="Str_Address_2.Text" xml:space="preserve">
+    <value>地址：</value>
+  </data>
+  <data name="Str_Address_Type.Text" xml:space="preserve">
+    <value>地址类型：</value>
+  </data>
+  <data name="Str_Address_Type_2.Text" xml:space="preserve">
+    <value>地址类型：</value>
+  </data>
+  <data name="Str_Advertise_as_connectable.Header" xml:space="preserve">
+    <value>以可连接方式广播。</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_2.Header" xml:space="preserve">
+    <value>以可连接方式广播。</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_3.Header" xml:space="preserve">
+    <value>以可连接方式广播。</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_4.Header" xml:space="preserve">
+    <value>以可连接方式广播。</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_5.Header" xml:space="preserve">
+    <value>以可连接方式广播。</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_6.Header" xml:space="preserve">
+    <value>以可连接方式广播。</value>
+  </data>
+  <data name="Str_Advertisement_Beacon.Text" xml:space="preserve">
+    <value>广播信标</value>
+  </data>
+  <data name="Str_Advertisement_Monitor.Text" xml:space="preserve">
+    <value>广播监听</value>
+  </data>
+  <data name="Str_Advertisement_Type.Text" xml:space="preserve">
+    <value>广播类型：</value>
+  </data>
+  <data name="Str_Advertising.Header" xml:space="preserve">
+    <value>广播中</value>
+  </data>
+  <data name="Str_Alert_Notification_Service.Text" xml:space="preserve">
+    <value>提醒通知服务</value>
+  </data>
+  <data name="Str_Alert_Notification_Service_2.Text" xml:space="preserve">
+    <value>提醒通知服务</value>
+  </data>
+  <data name="Str_Anonymous.Text" xml:space="preserve">
+    <value>匿名</value>
+  </data>
+  <data name="Str_Anonymous_2.Text" xml:space="preserve">
+    <value>匿名：</value>
+  </data>
+  <data name="Str_Apply_Filter.Content" xml:space="preserve">
+    <value>应用过滤</value>
+  </data>
+  <data name="Str_BT_4_2_Secure_Connection.Text" xml:space="preserve">
+    <value>蓝牙4.2安全连接：</value>
+  </data>
+  <data name="Str_BT_Address.Text" xml:space="preserve">
+    <value>蓝牙地址：</value>
+  </data>
+  <data name="Str_BT_Address_2.Text" xml:space="preserve">
+    <value>蓝牙地址：</value>
+  </data>
+  <data name="Str_Central_role_is_not_supported_on_thi.Text" xml:space="preserve">
+    <value>此设备不支持主机(中心)模式，无法扫描设备。</value>
+  </data>
+  <data name="Str_Characteristic_Name.Text" xml:space="preserve">
+    <value>特征名称：</value>
+  </data>
+  <data name="Str_Characteristic_Name_2.Text" xml:space="preserve">
+    <value>特征名称：</value>
+  </data>
+  <data name="Str_Characteristic_Short_UUID.Text" xml:space="preserve">
+    <value> - 特征短UUID：</value>
+  </data>
+  <data name="Str_Characteristics_Page.Text" xml:space="preserve">
+    <value>特征页</value>
+  </data>
+  <data name="Str_Clear_Filter.Content" xml:space="preserve">
+    <value>清除过滤</value>
+  </data>
+  <data name="Str_Close_Connections.Header" xml:space="preserve">
+    <value>关闭蓝牙连接</value>
+  </data>
+  <data name="Str_Close_Connections.OffContent" xml:space="preserve">
+    <value>关闭时：在应用内浏览时保持蓝牙连接不断开。</value>
+  </data>
+  <data name="Str_Close_Connections.OnContent" xml:space="preserve">
+    <value>打开时：导航到扫描页面时自动断开蓝牙连接。</value>
+  </data>
+  <data name="Str_Connectable.Text" xml:space="preserve">
+    <value>可连接：</value>
+  </data>
+  <data name="Str_Connected_clients.Text" xml:space="preserve">
+    <value>已连接的客户端列表：</value>
+  </data>
+  <data name="Str_Continuous_Enumeration.Content" xml:space="preserve">
+    <value>持续扫描设备</value>
+  </data>
+  <data name="Str_Data_Section_Data.Text" xml:space="preserve">
+    <value>数据段内容：</value>
+  </data>
+  <data name="Str_Data_Section_Type.Text" xml:space="preserve">
+    <value>数据段类型：</value>
+  </data>
+  <data name="Str_Decimal.Content" xml:space="preserve">
+    <value>十进制</value>
+  </data>
+  <data name="Str_Decimal_2.Content" xml:space="preserve">
+    <value>十进制</value>
+  </data>
+  <data name="Str_Descriptor_Name.Text" xml:space="preserve">
+    <value>描述符名称：</value>
+  </data>
+  <data name="Str_Device_Connected.Text" xml:space="preserve">
+    <value>设备已连接：</value>
+  </data>
+  <data name="Str_Device_Services_Page.Text" xml:space="preserve">
+    <value>设备服务页</value>
+  </data>
+  <data name="Str_Directed.Text" xml:space="preserve">
+    <value>定向：</value>
+  </data>
+  <data name="Str_Discover.Text" xml:space="preserve">
+    <value>扫描设备</value>
+  </data>
+  <data name="Str_Discover_and_Pair.Text" xml:space="preserve">
+    <value>扫描与配对设备</value>
+  </data>
+  <data name="Str_Discoverable_and_Connectable.Header" xml:space="preserve">
+    <value>开启广播：可被发现且可连接</value>
+  </data>
+  <data name="Str_Discoverable_and_Connectable.OffContent" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Str_Discoverable_and_Connectable.OnContent" xml:space="preserve">
+    <value>开启</value>
+  </data>
+  <data name="Str_Enter_Mouse_Capture_Fullscreen.Content" xml:space="preserve">
+    <value>进入鼠标捕获模式（全屏）</value>
+  </data>
+  <data name="Str_Enumeration_finished.Text" xml:space="preserve">
+    <value>扫描完成</value>
+  </data>
+  <data name="Str_Error_setting_notification.Text" xml:space="preserve">
+    <value>设置通知时出错</value>
+  </data>
+  <data name="Str_Error_setting_notification_2.Text" xml:space="preserve">
+    <value>设置通知时出错</value>
+  </data>
+  <data name="Str_Error_setting_notification_3.Text" xml:space="preserve">
+    <value>设置通知时出错</value>
+  </data>
+  <data name="Str_Error_setting_notification_4.Text" xml:space="preserve">
+    <value>设置通知时出错</value>
+  </data>
+  <data name="Str_Event_Type.Text" xml:space="preserve">
+    <value>事件类型：</value>
+  </data>
+  <data name="Str_Filter.Text" xml:space="preserve">
+    <value>过滤：</value>
+  </data>
+  <data name="Str_Handle.Text" xml:space="preserve">
+    <value>句柄：</value>
+  </data>
+  <data name="Str_Handle_2.Text" xml:space="preserve">
+    <value>句柄：</value>
+  </data>
+  <data name="Str_Handle_3.Text" xml:space="preserve">
+    <value>句柄：</value>
+  </data>
+  <data name="Str_Handle_4.Text" xml:space="preserve">
+    <value>句柄：</value>
+  </data>
+  <data name="Str_Hex.Content" xml:space="preserve">
+    <value>十六进制</value>
+  </data>
+  <data name="Str_Hex_2.Content" xml:space="preserve">
+    <value>十六进制</value>
+  </data>
+  <data name="Str_Hex_3.Content" xml:space="preserve">
+    <value>十六进制</value>
+  </data>
+  <data name="Str_Include_Tx_Power.Text" xml:space="preserve">
+    <value>包含发射功率</value>
+  </data>
+  <data name="Str_Include_service_data_in_advertisemen.Header" xml:space="preserve">
+    <value>在广播数据中包含本服务的数据。</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement.Header" xml:space="preserve">
+    <value>在广播中包含本服务的UUID。</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_2.Header" xml:space="preserve">
+    <value>在广播中包含本服务的UUID。</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_3.Header" xml:space="preserve">
+    <value>在广播中包含本服务的UUID。</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_4.Header" xml:space="preserve">
+    <value>在广播中包含本服务的UUID。</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_5.Header" xml:space="preserve">
+    <value>在广播中包含本服务的UUID。</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_6.Header" xml:space="preserve">
+    <value>在广播中包含本服务的UUID。</value>
+  </data>
+  <data name="Str_Indicate.Content" xml:space="preserve">
+    <value>指示</value>
+  </data>
+  <data name="Str_Indicate_2.Header" xml:space="preserve">
+    <value>指示</value>
+  </data>
+  <data name="Str_Indicate_2.OffContent" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="Str_Indicate_2.OnContent" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="Str_Indicate_3.Header" xml:space="preserve">
+    <value>指示</value>
+  </data>
+  <data name="Str_Indicate_3.OffContent" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="Str_Indicate_3.OnContent" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="Str_Microsoft_Service.Text" xml:space="preserve">
+    <value>微软服务</value>
+  </data>
+  <data name="Str_Mouse_Capture_Mode.Text" xml:space="preserve">
+    <value>鼠标捕获模式</value>
+  </data>
+  <data name="Str_Mouse_keyboard_are_captured_and_forw.Text" xml:space="preserve">
+    <value>鼠标 + 键盘均已捕获并转发到手机 · Esc 退出全屏 · F1 显示/隐藏本提示 · 小键盘 +/- 调灵敏度</value>
+  </data>
+  <data name="Str_None.Content" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="Str_Notify.Content" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="Str_Notify_2.Header" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="Str_Notify_2.OffContent" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="Str_Notify_2.OnContent" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="Str_Notify_3.Header" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="Str_Notify_3.OffContent" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="Str_Notify_3.OnContent" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="Str_Number_of_Advertisement_Services.Text" xml:space="preserve">
+    <value>广播服务数量：</value>
+  </data>
+  <data name="Str_Number_of_Services.Text" xml:space="preserve">
+    <value>服务数量：</value>
+  </data>
+  <data name="Str_Number_of_service_changed_events.Text" xml:space="preserve">
+    <value>服务变更事件次数：</value>
+  </data>
+  <data name="Str_Payload.Text" xml:space="preserve">
+    <value>负载</value>
+  </data>
+  <data name="Str_Payload_2.Text" xml:space="preserve">
+    <value>负载：</value>
+  </data>
+  <data name="Str_Peripheral_mode_is_not_supported_on_.Text" xml:space="preserve">
+    <value>此设备不支持从机(外设)模式，无法模拟蓝牙键盘。</value>
+  </data>
+  <data name="Str_Peripheral_mode_is_not_supported_on__2.Text" xml:space="preserve">
+    <value>此设备不支持从机(外设)模式，无法模拟蓝牙键盘。</value>
+  </data>
+  <data name="Str_Preferred_Tx_Power.Text" xml:space="preserve">
+    <value>首选发射功率</value>
+  </data>
+  <data name="Str_Privacy.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_10.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_11.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_2.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_3.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_4.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_5.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_6.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_7.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_8.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_9.Label" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="Str_Privacy_statement.Header" xml:space="preserve">
+    <value>隐私声明</value>
+  </data>
+  <data name="Str_Properties.Text" xml:space="preserve">
+    <value>属性：</value>
+  </data>
+  <data name="Str_Publish_advertisement.Header" xml:space="preserve">
+    <value>发布蓝牙广播。</value>
+  </data>
+  <data name="Str_Publish_advertisement_2.Header" xml:space="preserve">
+    <value>发布蓝牙广播。</value>
+  </data>
+  <data name="Str_Publish_advertisement_3.Header" xml:space="preserve">
+    <value>发布蓝牙广播。</value>
+  </data>
+  <data name="Str_Publish_advertisement_4.Header" xml:space="preserve">
+    <value>发布蓝牙广播。</value>
+  </data>
+  <data name="Str_Publish_advertisement_5.Header" xml:space="preserve">
+    <value>发布蓝牙广播。</value>
+  </data>
+  <data name="Str_Publish_advertisement_6.Header" xml:space="preserve">
+    <value>发布蓝牙广播。</value>
+  </data>
+  <data name="Str_Publishing.Header" xml:space="preserve">
+    <value>发布中</value>
+  </data>
+  <data name="Str_Quick_Content_Filter.Text" xml:space="preserve">
+    <value>快速内容过滤：</value>
+  </data>
+  <data name="Str_Read.Content" xml:space="preserve">
+    <value>读取</value>
+  </data>
+  <data name="Str_Read_Again.Content" xml:space="preserve">
+    <value>重新读取</value>
+  </data>
+  <data name="Str_Read_Value.Text" xml:space="preserve">
+    <value>读取值：</value>
+  </data>
+  <data name="Str_Rssi.Text" xml:space="preserve">
+    <value>信号：</value>
+  </data>
+  <data name="Str_Scan_Response.Text" xml:space="preserve">
+    <value>扫描响应：</value>
+  </data>
+  <data name="Str_Scannable.Text" xml:space="preserve">
+    <value>可扫描：</value>
+  </data>
+  <data name="Str_Section_Count.Text" xml:space="preserve">
+    <value>段数量：</value>
+  </data>
+  <data name="Str_Section_Data.Text" xml:space="preserve">
+    <value>段数据：</value>
+  </data>
+  <data name="Str_Section_Type.Text" xml:space="preserve">
+    <value>段类型：</value>
+  </data>
+  <data name="Str_Selected_Advertisement.Text" xml:space="preserve">
+    <value>已选中的广播</value>
+  </data>
+  <data name="Str_Selected_Advertisement_Beacon.Text" xml:space="preserve">
+    <value>已选中的广播信标</value>
+  </data>
+  <data name="Str_Service_Name.Text" xml:space="preserve">
+    <value>服务名称：</value>
+  </data>
+  <data name="Str_Service_Name_2.Text" xml:space="preserve">
+    <value>服务名称：</value>
+  </data>
+  <data name="Str_Service_Page.Text" xml:space="preserve">
+    <value>服务页</value>
+  </data>
+  <data name="Str_Service_UUID.Text" xml:space="preserve">
+    <value>服务UUID：</value>
+  </data>
+  <data name="Str_Settings.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_10.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_11.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_12.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_13.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_2.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_3.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_4.Header" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_5.Text" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_6.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_7.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_8.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_9.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Str_Settings_Page.Content" xml:space="preserve">
+    <value>设置页面</value>
+  </data>
+  <data name="Str_String.Content" xml:space="preserve">
+    <value>字符串</value>
+  </data>
+  <data name="Str_Timestamp.Text" xml:space="preserve">
+    <value>时间戳：</value>
+  </data>
+  <data name="Str_Total_Device_Count.Text" xml:space="preserve">
+    <value>设备总数：</value>
+  </data>
+  <data name="Str_TxPower.Text" xml:space="preserve">
+    <value>发射功率：</value>
+  </data>
+  <data name="Str_Use_Caching.Header" xml:space="preserve">
+    <value>使用缓存</value>
+  </data>
+  <data name="Str_Use_Caching.OffContent" xml:space="preserve">
+    <value>关闭时：如有必要，将根据GattRobustCaching支持情况发起无线请求。</value>
+  </data>
+  <data name="Str_Use_Caching.OnContent" xml:space="preserve">
+    <value>打开时：尽可能使用本地缓存的值。</value>
+  </data>
+  <data name="Str_Use_Extended_Format.Text" xml:space="preserve">
+    <value>使用扩展格式</value>
+  </data>
+  <data name="Str_Use_Light_Theme.Header" xml:space="preserve">
+    <value>使用浅色主题</value>
+  </data>
+  <data name="Str_Use_Light_Theme.OffContent" xml:space="preserve">
+    <value>深色主题</value>
+  </data>
+  <data name="Str_Use_Light_Theme.OnContent" xml:space="preserve">
+    <value>浅色主题</value>
+  </data>
+  <data name="Str_Use_Windows_notifications.Content" xml:space="preserve">
+    <value>使用Windows系统通知</value>
+  </data>
+  <data name="Str_Use_shell_drawn_back_button.Header" xml:space="preserve">
+    <value>使用系统绘制的返回按钮</value>
+  </data>
+  <data name="Str_Use_shell_drawn_back_button.OffContent" xml:space="preserve">
+    <value>返回按钮在页面标题栏</value>
+  </data>
+  <data name="Str_Use_shell_drawn_back_button.OnContent" xml:space="preserve">
+    <value>返回按钮显示在标题栏或任务栏</value>
+  </data>
+  <data name="Str_User_Description.Text" xml:space="preserve">
+    <value>用户描述</value>
+  </data>
+  <data name="Str_User_Description_2.Text" xml:space="preserve">
+    <value> - 用户描述：</value>
+  </data>
+  <data name="Str_User_Description_3.Text" xml:space="preserve">
+    <value> - 用户描述：</value>
+  </data>
+  <data name="Str_Value.Text" xml:space="preserve">
+    <value>值</value>
+  </data>
+  <data name="Str_Value_2.Text" xml:space="preserve">
+    <value>值：</value>
+  </data>
+  <data name="Str_Value_3.Text" xml:space="preserve">
+    <value>值：</value>
+  </data>
+  <data name="Str_Value_4.Text" xml:space="preserve">
+    <value>值：</value>
+  </data>
+  <data name="Str_Virtual_Keyboard.Text" xml:space="preserve">
+    <value>虚拟蓝牙键盘</value>
+  </data>
+  <data name="Str_Virtual_Keyboard_2.Text" xml:space="preserve">
+    <value>虚拟蓝牙键盘</value>
+  </data>
+  <data name="Str_Virtual_Peripheral.Text" xml:space="preserve">
+    <value>虚拟外设</value>
+  </data>
+  <data name="Str_Write.Content" xml:space="preserve">
+    <value>写入</value>
+  </data>
+  <data name="Str_WriteWithoutResponse.Content" xml:space="preserve">
+    <value>写入(无需响应)</value>
+  </data>
+  <data name="Str_Write_2.Content" xml:space="preserve">
+    <value>写入</value>
+  </data>
+  <data name="Str_Write_Transaction.Content" xml:space="preserve">
+    <value>事务写入</value>
+  </data>
+  <data name="Str_Write_Value.Text" xml:space="preserve">
+    <value>写入值：</value>
+  </data>
+  <data name="Str_StopLS.Value" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="Str_StartLS.Value" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="Str_ConnectedLS.Value" xml:space="preserve">
+    <value>已连接</value>
+  </data>
+  <data name="Str_DisconnectedLS.Value" xml:space="preserve">
+    <value>未连接</value>
+  </data>
+  <data name="Str_FatalError.Text" xml:space="preserve">
+    <value>严重错误</value>
+  </data>
+  <data name="Str_ErrTitle.Text" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="Str_ConnError.Text" xml:space="preserve">
+    <value>连接错误</value>
+  </data>
+  <data name="Str_ConnFail.Text" xml:space="preserve">
+    <value>连接失败</value>
+  </data>
+  <data name="Str_PairFail.Text" xml:space="preserve">
+    <value>配对失败</value>
+  </data>
+  <data name="Str_NoDevAccess.Text" xml:space="preserve">
+    <value>无法访问该设备。</value>
+  </data>
+  <data name="Str_NoDevAccessWhy.Text" xml:space="preserve">
+    <value>这通常意味着：
+1. 设备尚未与本机配对——请先点“配对”；
+2. 设备不提供 GATT 服务（手机一般不会作为 BLE 外设被连接）；
+3. 设备正在被其它程序占用。</value>
+  </data>
+  <data name="Str_UseKeyboardPage.Text" xml:space="preserve">
+    <value>如果目标是把本机当蓝牙键盘给手机用，请改用“虚拟蓝牙键盘”页，打开广播开关后在手机上配对本机。</value>
+  </data>
+  <data name="Str_PairDenied.Text" xml:space="preserve">
+    <value>系统拒绝了访问（AccessDenied）。
+
+常见原因：
+1. 该设备（如手机）未处于“可被发现/可配对”状态；
+2. 设备已与其它主机配对，请先在设备上取消配对；
+3. Windows 蓝牙权限被关闭：设置 &gt; 隐私 &gt; 蓝牙。</value>
+  </data>
+  <data name="Str_HidRadioOff.Text" xml:space="preserve">
+    <value>*** 已检测到：系统蓝牙当前处于关闭状态 ***</value>
+  </data>
+  <data name="Str_HidRadioOffFix.Text" xml:space="preserve">
+    <value>请先打开系统蓝牙（设置 -&gt; 蓝牙和设备，或任务栏快捷设置），然后再打开上面的广播开关。</value>
+  </data>
+  <data name="Str_HidRadioOnStillFails.Text" xml:space="preserve">
+    <value>蓝牙已打开，但广播资源仍不可用。请按顺序尝试：</value>
+  </data>
+  <data name="Str_HidSteps.Text" xml:space="preserve">
+    <value>1. 关闭「手机连接 / Phone Link」等占用蓝牙的程序；
+2. 蓝牙关掉，等 5 秒再打开；
+3. 设备管理器 -&gt; 蓝牙 -&gt; 英特尔无线 Bluetooth -&gt; 右键「禁用」再「启用」；
+4. 更新 Intel 无线蓝牙驱动到最新版本；
+5. 重启电脑后重新打开本应用。</value>
+  </data>
+  <data name="Str_HidNeedPeripheral.Text" xml:space="preserve">
+    <value>提示：本功能需要蓝牙适配器支持「外设 / Peripheral」角色。</value>
+  </data>
+  <data name="Str_AdapterErr.Text" xml:space="preserve">
+    <value>无法访问蓝牙适配器，请确认蓝牙已启用且驱动正常。</value>
+  </data>
+  <data name="Str_PairReq.Text" xml:space="preserve">
+    <value>请输入设备上显示的 PIN 码。</value>
+  </data>
+  <data name="Str_CannotPair.Text" xml:space="preserve">
+    <value>此设备当前无法配对。请确认它已开启蓝牙、处于可被发现状态，且未被其它设备占用。</value>
+  </data>
+  <data name="Str_LangLabel.Text" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Str_LangRestart.Text" xml:space="preserve">
+    <value>切换语言后应用会自动重启。</value>
+  </data>
+</root>

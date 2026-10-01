@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Str_About.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_10.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_11.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_12.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_2.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_3.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_4.Header" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_5.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_6.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_7.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_8.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_About_9.Label" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Str_Active.Content" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Str_Add_Beacon.Content" xml:space="preserve">
+    <value>Add Beacon</value>
+  </data>
+  <data name="Str_Add_Service.Content" xml:space="preserve">
+    <value>Add Service</value>
+  </data>
+  <data name="Str_Address.Text" xml:space="preserve">
+    <value>Address: </value>
+  </data>
+  <data name="Str_Address_2.Text" xml:space="preserve">
+    <value>Address: </value>
+  </data>
+  <data name="Str_Address_Type.Text" xml:space="preserve">
+    <value>Address Type: </value>
+  </data>
+  <data name="Str_Address_Type_2.Text" xml:space="preserve">
+    <value>Address Type: </value>
+  </data>
+  <data name="Str_Advertise_as_connectable.Header" xml:space="preserve">
+    <value>Advertise as connectable.</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_2.Header" xml:space="preserve">
+    <value>Advertise as connectable.</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_3.Header" xml:space="preserve">
+    <value>Advertise as connectable.</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_4.Header" xml:space="preserve">
+    <value>Advertise as connectable.</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_5.Header" xml:space="preserve">
+    <value>Advertise as connectable.</value>
+  </data>
+  <data name="Str_Advertise_as_connectable_6.Header" xml:space="preserve">
+    <value>Advertise as connectable.</value>
+  </data>
+  <data name="Str_Advertisement_Beacon.Text" xml:space="preserve">
+    <value>Advertisement Beacon</value>
+  </data>
+  <data name="Str_Advertisement_Monitor.Text" xml:space="preserve">
+    <value>Advertisement Monitor</value>
+  </data>
+  <data name="Str_Advertisement_Type.Text" xml:space="preserve">
+    <value>Advertisement Type: </value>
+  </data>
+  <data name="Str_Advertising.Header" xml:space="preserve">
+    <value>Advertising</value>
+  </data>
+  <data name="Str_Alert_Notification_Service.Text" xml:space="preserve">
+    <value>Alert Notification Service</value>
+  </data>
+  <data name="Str_Alert_Notification_Service_2.Text" xml:space="preserve">
+    <value>Alert Notification Service</value>
+  </data>
+  <data name="Str_Anonymous.Text" xml:space="preserve">
+    <value>Anonymous</value>
+  </data>
+  <data name="Str_Anonymous_2.Text" xml:space="preserve">
+    <value>Anonymous: </value>
+  </data>
+  <data name="Str_Apply_Filter.Content" xml:space="preserve">
+    <value>Apply Filter</value>
+  </data>
+  <data name="Str_BT_4_2_Secure_Connection.Text" xml:space="preserve">
+    <value>BT 4.2 Secure Connection:</value>
+  </data>
+  <data name="Str_BT_Address.Text" xml:space="preserve">
+    <value>BT Address: </value>
+  </data>
+  <data name="Str_BT_Address_2.Text" xml:space="preserve">
+    <value>BT Address: </value>
+  </data>
+  <data name="Str_Central_role_is_not_supported_on_thi.Text" xml:space="preserve">
+    <value>Central role is not supported on this device</value>
+  </data>
+  <data name="Str_Characteristic_Name.Text" xml:space="preserve">
+    <value>Characteristic Name:</value>
+  </data>
+  <data name="Str_Characteristic_Name_2.Text" xml:space="preserve">
+    <value>Characteristic Name:</value>
+  </data>
+  <data name="Str_Characteristic_Short_UUID.Text" xml:space="preserve">
+    <value> - Characteristic Short UUID:</value>
+  </data>
+  <data name="Str_Characteristics_Page.Text" xml:space="preserve">
+    <value>Characteristics Page</value>
+  </data>
+  <data name="Str_Clear_Filter.Content" xml:space="preserve">
+    <value>Clear Filter</value>
+  </data>
+  <data name="Str_Close_Connections.Header" xml:space="preserve">
+    <value>Close Connections</value>
+  </data>
+  <data name="Str_Close_Connections.OffContent" xml:space="preserve">
+    <value>Leave Bluetooth connections open while navigating the app.</value>
+  </data>
+  <data name="Str_Close_Connections.OnContent" xml:space="preserve">
+    <value>Close Bluetooth connections upon navigating to Discovery page.</value>
+  </data>
+  <data name="Str_Connectable.Text" xml:space="preserve">
+    <value>Connectable: </value>
+  </data>
+  <data name="Str_Connected_clients.Text" xml:space="preserve">
+    <value>Connected clients: </value>
+  </data>
+  <data name="Str_Continuous_Enumeration.Content" xml:space="preserve">
+    <value>Continuous Enumeration</value>
+  </data>
+  <data name="Str_Data_Section_Data.Text" xml:space="preserve">
+    <value>Data Section Data: </value>
+  </data>
+  <data name="Str_Data_Section_Type.Text" xml:space="preserve">
+    <value>Data Section Type: </value>
+  </data>
+  <data name="Str_Decimal.Content" xml:space="preserve">
+    <value>Decimal</value>
+  </data>
+  <data name="Str_Decimal_2.Content" xml:space="preserve">
+    <value>Decimal</value>
+  </data>
+  <data name="Str_Descriptor_Name.Text" xml:space="preserve">
+    <value>Descriptor Name:</value>
+  </data>
+  <data name="Str_Device_Connected.Text" xml:space="preserve">
+    <value>Device Connected:</value>
+  </data>
+  <data name="Str_Device_Services_Page.Text" xml:space="preserve">
+    <value>Device Services Page</value>
+  </data>
+  <data name="Str_Directed.Text" xml:space="preserve">
+    <value>Directed: </value>
+  </data>
+  <data name="Str_Discover.Text" xml:space="preserve">
+    <value>Discover</value>
+  </data>
+  <data name="Str_Discover_and_Pair.Text" xml:space="preserve">
+    <value>Discover and Pair</value>
+  </data>
+  <data name="Str_Discoverable_and_Connectable.Header" xml:space="preserve">
+    <value>Discoverable and Connectable</value>
+  </data>
+  <data name="Str_Discoverable_and_Connectable.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Str_Discoverable_and_Connectable.OnContent" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Str_Enter_Mouse_Capture_Fullscreen.Content" xml:space="preserve">
+    <value>Enter Mouse Capture (Fullscreen)</value>
+  </data>
+  <data name="Str_Enumeration_finished.Text" xml:space="preserve">
+    <value>Enumeration finished</value>
+  </data>
+  <data name="Str_Error_setting_notification.Text" xml:space="preserve">
+    <value>Error setting notification</value>
+  </data>
+  <data name="Str_Error_setting_notification_2.Text" xml:space="preserve">
+    <value>Error setting notification</value>
+  </data>
+  <data name="Str_Error_setting_notification_3.Text" xml:space="preserve">
+    <value>Error setting notification</value>
+  </data>
+  <data name="Str_Error_setting_notification_4.Text" xml:space="preserve">
+    <value>Error setting notification</value>
+  </data>
+  <data name="Str_Event_Type.Text" xml:space="preserve">
+    <value>Event Type: </value>
+  </data>
+  <data name="Str_Filter.Text" xml:space="preserve">
+    <value>Filter: </value>
+  </data>
+  <data name="Str_Handle.Text" xml:space="preserve">
+    <value>Handle: </value>
+  </data>
+  <data name="Str_Handle_2.Text" xml:space="preserve">
+    <value>Handle: </value>
+  </data>
+  <data name="Str_Handle_3.Text" xml:space="preserve">
+    <value>Handle: </value>
+  </data>
+  <data name="Str_Handle_4.Text" xml:space="preserve">
+    <value>Handle: </value>
+  </data>
+  <data name="Str_Hex.Content" xml:space="preserve">
+    <value>Hex</value>
+  </data>
+  <data name="Str_Hex_2.Content" xml:space="preserve">
+    <value>Hex</value>
+  </data>
+  <data name="Str_Hex_3.Content" xml:space="preserve">
+    <value>Hex</value>
+  </data>
+  <data name="Str_Include_Tx_Power.Text" xml:space="preserve">
+    <value>Include Tx Power</value>
+  </data>
+  <data name="Str_Include_service_data_in_advertisemen.Header" xml:space="preserve">
+    <value>Include service data in advertisement.</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement.Header" xml:space="preserve">
+    <value>Include service in advertisement.</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_2.Header" xml:space="preserve">
+    <value>Include service in advertisement.</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_3.Header" xml:space="preserve">
+    <value>Include service in advertisement.</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_4.Header" xml:space="preserve">
+    <value>Include service in advertisement.</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_5.Header" xml:space="preserve">
+    <value>Include service in advertisement.</value>
+  </data>
+  <data name="Str_Include_service_in_advertisement_6.Header" xml:space="preserve">
+    <value>Include service in advertisement.</value>
+  </data>
+  <data name="Str_Indicate.Content" xml:space="preserve">
+    <value>Indicate</value>
+  </data>
+  <data name="Str_Indicate_2.Header" xml:space="preserve">
+    <value>Indicate</value>
+  </data>
+  <data name="Str_Indicate_2.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Str_Indicate_2.OnContent" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Str_Indicate_3.Header" xml:space="preserve">
+    <value>Indicate</value>
+  </data>
+  <data name="Str_Indicate_3.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Str_Indicate_3.OnContent" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Str_Microsoft_Service.Text" xml:space="preserve">
+    <value>Microsoft Service</value>
+  </data>
+  <data name="Str_Mouse_Capture_Mode.Text" xml:space="preserve">
+    <value>Mouse Capture Mode</value>
+  </data>
+  <data name="Str_Mouse_keyboard_are_captured_and_forw.Text" xml:space="preserve">
+    <value>Mouse + keyboard are captured and forwarded to the phone · Esc to exit · F1 toggles this hint · Numpad +/- sensitivity</value>
+  </data>
+  <data name="Str_None.Content" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Str_Notify.Content" xml:space="preserve">
+    <value>Notify</value>
+  </data>
+  <data name="Str_Notify_2.Header" xml:space="preserve">
+    <value>Notify</value>
+  </data>
+  <data name="Str_Notify_2.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Str_Notify_2.OnContent" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Str_Notify_3.Header" xml:space="preserve">
+    <value>Notify</value>
+  </data>
+  <data name="Str_Notify_3.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Str_Notify_3.OnContent" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Str_Number_of_Advertisement_Services.Text" xml:space="preserve">
+    <value>Number of Advertisement Services:</value>
+  </data>
+  <data name="Str_Number_of_Services.Text" xml:space="preserve">
+    <value>Number of Services:</value>
+  </data>
+  <data name="Str_Number_of_service_changed_events.Text" xml:space="preserve">
+    <value>Number of service changed events:</value>
+  </data>
+  <data name="Str_Payload.Text" xml:space="preserve">
+    <value>Payload</value>
+  </data>
+  <data name="Str_Payload_2.Text" xml:space="preserve">
+    <value>Payload: </value>
+  </data>
+  <data name="Str_Peripheral_mode_is_not_supported_on_.Text" xml:space="preserve">
+    <value>Peripheral mode is not supported on this device</value>
+  </data>
+  <data name="Str_Peripheral_mode_is_not_supported_on__2.Text" xml:space="preserve">
+    <value>Peripheral mode is not supported on this device</value>
+  </data>
+  <data name="Str_Preferred_Tx_Power.Text" xml:space="preserve">
+    <value>Preferred Tx Power</value>
+  </data>
+  <data name="Str_Privacy.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_10.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_11.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_2.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_3.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_4.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_5.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_6.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_7.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_8.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_9.Label" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Str_Privacy_statement.Header" xml:space="preserve">
+    <value>Privacy statement</value>
+  </data>
+  <data name="Str_Properties.Text" xml:space="preserve">
+    <value>Properties: </value>
+  </data>
+  <data name="Str_Publish_advertisement.Header" xml:space="preserve">
+    <value>Publish advertisement.</value>
+  </data>
+  <data name="Str_Publish_advertisement_2.Header" xml:space="preserve">
+    <value>Publish advertisement.</value>
+  </data>
+  <data name="Str_Publish_advertisement_3.Header" xml:space="preserve">
+    <value>Publish advertisement.</value>
+  </data>
+  <data name="Str_Publish_advertisement_4.Header" xml:space="preserve">
+    <value>Publish advertisement.</value>
+  </data>
+  <data name="Str_Publish_advertisement_5.Header" xml:space="preserve">
+    <value>Publish advertisement.</value>
+  </data>
+  <data name="Str_Publish_advertisement_6.Header" xml:space="preserve">
+    <value>Publish advertisement.</value>
+  </data>
+  <data name="Str_Publishing.Header" xml:space="preserve">
+    <value>Publishing</value>
+  </data>
+  <data name="Str_Quick_Content_Filter.Text" xml:space="preserve">
+    <value>Quick Content Filter: </value>
+  </data>
+  <data name="Str_Read.Content" xml:space="preserve">
+    <value>Read</value>
+  </data>
+  <data name="Str_Read_Again.Content" xml:space="preserve">
+    <value>Read Again</value>
+  </data>
+  <data name="Str_Read_Value.Text" xml:space="preserve">
+    <value>Read Value: </value>
+  </data>
+  <data name="Str_Rssi.Text" xml:space="preserve">
+    <value>Rssi: </value>
+  </data>
+  <data name="Str_Scan_Response.Text" xml:space="preserve">
+    <value>Scan Response: </value>
+  </data>
+  <data name="Str_Scannable.Text" xml:space="preserve">
+    <value>Scannable: </value>
+  </data>
+  <data name="Str_Section_Count.Text" xml:space="preserve">
+    <value>Section Count: </value>
+  </data>
+  <data name="Str_Section_Data.Text" xml:space="preserve">
+    <value>Section Data: </value>
+  </data>
+  <data name="Str_Section_Type.Text" xml:space="preserve">
+    <value>Section Type: </value>
+  </data>
+  <data name="Str_Selected_Advertisement.Text" xml:space="preserve">
+    <value>Selected Advertisement</value>
+  </data>
+  <data name="Str_Selected_Advertisement_Beacon.Text" xml:space="preserve">
+    <value>Selected Advertisement Beacon</value>
+  </data>
+  <data name="Str_Service_Name.Text" xml:space="preserve">
+    <value>Service Name: </value>
+  </data>
+  <data name="Str_Service_Name_2.Text" xml:space="preserve">
+    <value>Service Name: </value>
+  </data>
+  <data name="Str_Service_Page.Text" xml:space="preserve">
+    <value>Service Page</value>
+  </data>
+  <data name="Str_Service_UUID.Text" xml:space="preserve">
+    <value>Service UUID: </value>
+  </data>
+  <data name="Str_Settings.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_10.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_11.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_12.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_13.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_2.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_3.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_4.Header" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_5.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_6.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_7.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_8.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_9.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Str_Settings_Page.Content" xml:space="preserve">
+    <value>Settings Page</value>
+  </data>
+  <data name="Str_String.Content" xml:space="preserve">
+    <value>String</value>
+  </data>
+  <data name="Str_Timestamp.Text" xml:space="preserve">
+    <value>Timestamp: </value>
+  </data>
+  <data name="Str_Total_Device_Count.Text" xml:space="preserve">
+    <value>Total Device Count:</value>
+  </data>
+  <data name="Str_TxPower.Text" xml:space="preserve">
+    <value>TxPower: </value>
+  </data>
+  <data name="Str_Use_Caching.Header" xml:space="preserve">
+    <value>Use Caching</value>
+  </data>
+  <data name="Str_Use_Caching.OffContent" xml:space="preserve">
+    <value>Will make over the air requests if necessary based on GattRobustCaching if supported.</value>
+  </data>
+  <data name="Str_Use_Caching.OnContent" xml:space="preserve">
+    <value>Will use locally cached values where possible.</value>
+  </data>
+  <data name="Str_Use_Extended_Format.Text" xml:space="preserve">
+    <value>Use Extended Format</value>
+  </data>
+  <data name="Str_Use_Light_Theme.Header" xml:space="preserve">
+    <value>Use Light Theme</value>
+  </data>
+  <data name="Str_Use_Light_Theme.OffContent" xml:space="preserve">
+    <value>Dark theme</value>
+  </data>
+  <data name="Str_Use_Light_Theme.OnContent" xml:space="preserve">
+    <value>Light theme</value>
+  </data>
+  <data name="Str_Use_Windows_notifications.Content" xml:space="preserve">
+    <value>Use Windows notifications</value>
+  </data>
+  <data name="Str_Use_shell_drawn_back_button.Header" xml:space="preserve">
+    <value>Use shell-drawn back button</value>
+  </data>
+  <data name="Str_Use_shell_drawn_back_button.OffContent" xml:space="preserve">
+    <value>Back button in page header</value>
+  </data>
+  <data name="Str_Use_shell_drawn_back_button.OnContent" xml:space="preserve">
+    <value>Back button in titlebar or taskbar</value>
+  </data>
+  <data name="Str_User_Description.Text" xml:space="preserve">
+    <value>User Description</value>
+  </data>
+  <data name="Str_User_Description_2.Text" xml:space="preserve">
+    <value> - User Description: </value>
+  </data>
+  <data name="Str_User_Description_3.Text" xml:space="preserve">
+    <value> - User Description: </value>
+  </data>
+  <data name="Str_Value.Text" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Str_Value_2.Text" xml:space="preserve">
+    <value>Value: </value>
+  </data>
+  <data name="Str_Value_3.Text" xml:space="preserve">
+    <value>Value: </value>
+  </data>
+  <data name="Str_Value_4.Text" xml:space="preserve">
+    <value>Value: </value>
+  </data>
+  <data name="Str_Virtual_Keyboard.Text" xml:space="preserve">
+    <value>Virtual Keyboard</value>
+  </data>
+  <data name="Str_Virtual_Keyboard_2.Text" xml:space="preserve">
+    <value>Virtual Keyboard</value>
+  </data>
+  <data name="Str_Virtual_Peripheral.Text" xml:space="preserve">
+    <value>Virtual Peripheral</value>
+  </data>
+  <data name="Str_Write.Content" xml:space="preserve">
+    <value>Write</value>
+  </data>
+  <data name="Str_WriteWithoutResponse.Content" xml:space="preserve">
+    <value>WriteWithoutResponse</value>
+  </data>
+  <data name="Str_Write_2.Content" xml:space="preserve">
+    <value>Write</value>
+  </data>
+  <data name="Str_Write_Transaction.Content" xml:space="preserve">
+    <value>Write Transaction</value>
+  </data>
+  <data name="Str_Write_Value.Text" xml:space="preserve">
+    <value>Write Value: </value>
+  </data>
+  <data name="Str_StopLS.Value" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Str_StartLS.Value" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Str_ConnectedLS.Value" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="Str_DisconnectedLS.Value" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="Str_FatalError.Text" xml:space="preserve">
+    <value>Fatal Error</value>
+  </data>
+  <data name="Str_ErrTitle.Text" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Str_ConnError.Text" xml:space="preserve">
+    <value>Connection error</value>
+  </data>
+  <data name="Str_ConnFail.Text" xml:space="preserve">
+    <value>Connection failures</value>
+  </data>
+  <data name="Str_PairFail.Text" xml:space="preserve">
+    <value>Pairing failed</value>
+  </data>
+  <data name="Str_NoDevAccess.Text" xml:space="preserve">
+    <value>Cannot access the device.</value>
+  </data>
+  <data name="Str_NoDevAccessWhy.Text" xml:space="preserve">
+    <value>This usually means:
+1. The device is not paired with this PC yet - press "Pair" first;
+2. The device exposes no GATT services (phones are generally not BLE peripherals);
+3. Another program is using the device.</value>
+  </data>
+  <data name="Str_UseKeyboardPage.Text" xml:space="preserve">
+    <value>To use this PC as a Bluetooth keyboard for a phone, use the "Virtual Keyboard" page instead: turn on advertising there, then pair from the phone.</value>
+  </data>
+  <data name="Str_PairDenied.Text" xml:space="preserve">
+    <value>The system denied access (AccessDenied). Common causes:
+1. The device is not in discoverable/pairable mode;
+2. It is already paired with another host - unpair it there first;
+3. Windows Bluetooth permission is off: Settings &gt; Privacy &gt; Bluetooth.</value>
+  </data>
+  <data name="Str_HidRadioOff.Text" xml:space="preserve">
+    <value>*** Detected: system Bluetooth is currently OFF ***</value>
+  </data>
+  <data name="Str_HidRadioOffFix.Text" xml:space="preserve">
+    <value>Turn Bluetooth on first (Settings &gt; Bluetooth &amp; devices, or the taskbar quick settings), then flip the advertising switch above.</value>
+  </data>
+  <data name="Str_HidRadioOnStillFails.Text" xml:space="preserve">
+    <value>Bluetooth is on but the advertising resource is still unavailable. Try in order:</value>
+  </data>
+  <data name="Str_HidSteps.Text" xml:space="preserve">
+    <value>1. Close Phone Link / other apps that use Bluetooth;
+2. Turn Bluetooth off, wait 5 s, turn it back on;
+3. Device Manager &gt; Bluetooth &gt; Intel Wireless Bluetooth &gt; Disable then Enable;
+4. Update the Intel Bluetooth driver;
+5. Restart the PC and reopen this app.</value>
+  </data>
+  <data name="Str_HidNeedPeripheral.Text" xml:space="preserve">
+    <value>Note: this feature needs a Bluetooth adapter that supports the peripheral role.</value>
+  </data>
+  <data name="Str_AdapterErr.Text" xml:space="preserve">
+    <value>Error getting access to the Bluetooth adapter. Is Bluetooth enabled?</value>
+  </data>
+  <data name="Str_PairReq.Text" xml:space="preserve">
+    <value>Please enter the PIN shown on the device.</value>
+  </data>
+  <data name="Str_CannotPair.Text" xml:space="preserve">
+    <value>This device cannot be paired right now. Make sure Bluetooth is on, it is discoverable, and not in use by another host.</value>
+  </data>
+  <data name="Str_LangLabel.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Str_LangRestart.Text" xml:space="preserve">
+    <value>The app restarts automatically after switching language.</value>
+  </data>
+</root>

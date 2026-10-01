@@ -1,0 +1,50 @@
+# ---- Build output ----
+[Bb]in/
+[Oo]bj/
+AppPackages/
+BundleArtifacts/
+TestResults/
+*.appxsym
+*.appxupload
+*.msixbundle
+*.msix
+*.appx
+*.pfx
+*.user
+*.suo
+*.cache
+*.pdb
+!deploy/**/README*
+
+# ---- Visual Studio / Rider ----
+.vs/
+.vscode/
+.idea/
+*.rsuser
+*.userprefs
+
+# ---- NuGet ----
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+
+# ---- Deploy artifacts (regenerable; see README "Building from source") ----
+deploy/AppX/
+deploy/nuget/
+deploy/refasm/
+deploy/dumps/
+deploy/*.json
+deploy/*.bak
+deploy/*.out.txt
+deploy/*.txt
+
+# ---- Localisation scratch (transient tooling output) ----
+deploy/xaml_localize.py
+deploy/strip_literals.py
+
+# ---- OS junk ----
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log

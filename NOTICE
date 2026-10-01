@@ -1,0 +1,146 @@
+VirtualBT
+Copyright (C) 2026  xrh114514
+
+This product is released under the GNU General Public License, version 3
+(see the LICENSE file in this directory).
+
+It is a derivative work built on top of several third-party projects. Their
+original copyright notices and license terms are reproduced below and must be
+preserved whenever this software or a derivative of it is redistributed.
+
+================================================================================
+0. VirtualBT  (the upstream project this repository is based on)
+================================================================================
+Location: Whole repository (this is a modified fork).
+License:  GPL-3.0
+
+    Upstream repository:
+        https://github.com/itsmikethetech/VirtualBT
+    Mirror / organisation copy:
+        https://github.com/VirtualDrivers/VirtualBT
+
+    Copyright (C) 2024  MikeTheTech (itsmikethetech)
+
+    This repository contains modifications relative to the upstream project;
+    they are listed in CHANGELOG.md. The upstream project is itself a derivative
+    of the projects credited in sections 1-4 below.
+
+================================================================================
+1. BluetoothLEExplorer  (Microsoft Corporation)
+================================================================================
+Location: BluetoothLEExplorer/, GattServicesLibrary/, SortedObservableCollection/
+License:  MIT
+
+    The MIT License (MIT)
+
+    Copyright (c) Microsoft Corporation.  All rights reserved.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+    Source: https://github.com/microsoft/BluetoothLEExplorer
+
+================================================================================
+2. NXBT  (Brikwerk)
+================================================================================
+Location: NXBT/
+License:  MIT
+
+    The MIT License (MIT)
+
+    Copyright (c) 2019 Brikwerk
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+    Source: https://github.com/Brikwerk/nxbt
+
+================================================================================
+3. joycontrol  (mart1nro)
+================================================================================
+Location: JoyControl/
+License:  GPL-3.0 (see JoyControl/LICENSE)
+
+    Copyright (C) 2019  mart1nro
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Source: https://github.com/mart1nro/joycontrol
+
+================================================================================
+4. Nintendo_Switch_Reverse_Engineering  (dekuNukem)
+================================================================================
+Location: Referenced documentation only (no code vendored).
+License:  See the upstream repository.
+
+    Source: https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering
+
+================================================================================
+5. NuGet packages used at build time
+================================================================================
+The following Microsoft .NET Native packages are fetched from nuget.org during
+the build and are redistributed by Microsoft under their own terms:
+
+    Microsoft.Net.Native.Compiler            1.6.2
+    Microsoft.Net.Native.SharedLibrary-x86   1.6.1
+    Microsoft.Net.Native.SharedLibrary-x64   1.6.1
+    Microsoft.Net.Native.SharedLibrary-arm   1.6.1
+    Microsoft.NETCore.UniversalWindowsPlatform 5.3.3
+
+--------------------------------------------------------------------------------
+Notes on the licence combination
+--------------------------------------------------------------------------------
+The MIT licence permits redistribution and relicensing. Because the overall
+project is distributed under GPL-3.0 and MIT is GPL-compatible, the MIT-licensed
+components above are redistributed here as part of a GPL-3.0 combined work while
+their original MIT notices (reproduced verbatim) are preserved, as required by
+both licences.
+
+Modifications relative to the upstream projects are listed in CHANGELOG.md.
+
+--------------------------------------------------------------------------------
+Project URLs (complete list)
+--------------------------------------------------------------------------------
+Upstream (this project's origin):
+    https://github.com/itsmikethetech/VirtualBT
+    https://github.com/VirtualDrivers/VirtualBT
+
+Referenced / vendored:
+    https://github.com/microsoft/BluetoothLEExplorer          (MIT)
+    https://github.com/Brikwerk/nxbt                          (MIT)
+    https://github.com/mart1nro/joycontrol                    (GPL-3.0)
+    https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering  (docs)
+
