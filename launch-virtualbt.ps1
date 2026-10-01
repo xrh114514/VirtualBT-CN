@@ -47,13 +47,19 @@ if ($running) {
 }
 
 # --- 2. framework packages ---
-Write-Host '[2/4] Checking .NET Native 1.6 runtime packages...'
+Write-Host '[2/4] Checking framework packages...'
+# Arch is only checked where the package is architecture-specific (VCLibs):
+# the app is x86, so an x64-only VCLibs install does not satisfy the dependency.
 $need = @(
     @{ Name = 'Microsoft.NET.Native.Runtime.1.6';  File = 'Microsoft.NET.Native.Runtime.1.6.appx' },
-    @{ Name = 'Microsoft.NET.Native.Framework.1.6'; File = 'Microsoft.NET.Native.Framework.1.6.appx' }
+    @{ Name = 'Microsoft.NET.Native.Framework.1.6'; File = 'Microsoft.NET.Native.Framework.1.6.appx' },
+    @{ Name = 'Microsoft.VCLibs.140.00';           File = 'Microsoft.VCLibs.x86.14.00.appx'; Arch = 'X86' }
 )
 foreach ($p in $need) {
     $installed = Get-AppxPackage -Name $p.Name -ErrorAction SilentlyContinue
+    if ($p.Arch) {
+        $installed = $installed | Where-Object { $_.Architecture -eq $p.Arch }
+    }
     if (-not $installed) {
         $path = Join-Path $nuget $p.File
         if (-not (Test-Path $path)) {

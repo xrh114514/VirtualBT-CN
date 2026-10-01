@@ -34,6 +34,7 @@ deploy/AppX/
 deploy/nuget/
 deploy/refasm/
 deploy/dumps/
+deploy/dist/
 deploy/*.json
 deploy/*.bak
 deploy/*.out.txt
