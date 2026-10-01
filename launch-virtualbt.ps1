@@ -77,19 +77,33 @@ foreach ($p in $need) {
 
 # --- 3. register app ---
 Write-Host '[3/4] Checking app registration...'
-$pkg = Get-AppxPackage -Name $pkgName -ErrorAction SilentlyContinue
-if (-not $pkg) {
-    $manifest = Join-Path $appx 'AppxManifest.xml'
-    if (-not (Test-Path $manifest)) {
-        Write-Host ("  MISSING: " + $manifest)
-        exit 1
-    }
-    Write-Host '  Registering VirtualBT...'
-    Add-AppxPackage -Register $manifest
-    Write-Host '  OK'
-} else {
-    Write-Host ("  Already registered: " + $pkg.PackageFullName + " (" + $pkg.Status + ")")
+$manifest = Join-Path $appx 'AppxManifest.xml'
+if (-not (Test-Path $manifest)) {
+    Write-Host ("  MISSING: " + $manifest)
+    exit 1
 }
+$expectedPath = [System.IO.Path]::GetFullPath($appx).TrimEnd('\')
+[xml]$mx = Get-Content -Path $manifest
+$expectedVersion = $mx.Package.Identity.Version
+$pkg = Get-AppxPackage -Name $pkgName -ErrorAction SilentlyContinue
+if ($pkg) {
+    $samePath = $pkg.InstallLocation -and
+                ([System.IO.Path]::GetFullPath($pkg.InstallLocation).TrimEnd('\') -eq $expectedPath)
+    $sameVersion = ($pkg.Version -eq $expectedVersion)
+    if (-not ($samePath -and $sameVersion)) {
+        # Registered from a different folder or an older version. Remove it so
+        # the registration below points at this copy instead of launching the
+        # stale build.
+        Write-Host ("  Re-registering: " + $pkg.PackageFullName + " (" + $pkg.InstallLocation + ") -> " + $expectedVersion)
+        $pkg | Remove-AppxPackage -PreserveApplicationData
+    }
+}
+# Always (re-)register. Replacing files under a registered loose package
+# leaves the registration stale - the app then silently refuses to start.
+# Add-AppxPackage -Register is idempotent and takes about a second.
+Write-Host ("  Registering VirtualBT " + $expectedVersion + " ...")
+Add-AppxPackage -Register $manifest
+Write-Host '  OK'
 
 # --- 4. launch ---
 Write-Host '[4/4] Launching VirtualBT...'

@@ -123,6 +123,7 @@
     <Compile Include="Characteristics\BatteryLevelCharacteristic.cs" />
     <Compile Include="GenericGattCharacteristic.cs" />
     <Compile Include="Helpers\PresentationFormats.cs" />
+    <Compile Include="Helpers\SafeDispatcher.cs" />
     <Compile Include="Helpers\ValueConverter.cs" />
     <Compile Include="Services\AlertNotificationService.cs" />
     <Compile Include="Services\BatteryService.cs" />

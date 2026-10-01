@@ -184,21 +184,39 @@ namespace BluetoothLEExplorer.ViewModels
 
         private async void VirtualKeyboard_SubscribedHidClientsChanged(IReadOnlyList<Windows.Devices.Bluetooth.GenericAttributeProfile.GattSubscribedClient> subscribedClients)
         {
-            ObservableCollection<ObservableGattClient> currentHidClients = new ObservableCollection<ObservableGattClient>();
-            if (subscribedClients != null)
+            // async void GATT callback: an exception here kills the process, so
+            // the whole body is guarded. This runs on a thread-pool thread.
+            try
             {
-                foreach (var client in subscribedClients)
+                ObservableCollection<ObservableGattClient> currentHidClients = new ObservableCollection<ObservableGattClient>();
+                if (subscribedClients != null)
                 {
-                    currentHidClients.Add(await ObservableGattClient.FromIdAsync(client.Session.DeviceId.Id));
+                    foreach (var client in subscribedClients)
+                    {
+                        var observed = await ObservableGattClient.FromIdAsync(client.Session.DeviceId.Id);
+                        if (observed != null)
+                        {
+                            currentHidClients.Add(observed);
+                        }
+                    }
                 }
-            }
 
-            lock (m_subscribedHidClientsLock)
-            {
-                m_subscribedHidClients = currentHidClients;
+                lock (m_subscribedHidClientsLock)
+                {
+                    m_subscribedHidClients = currentHidClients;
+                }
+
+                // Hop to the UI thread before notifying the XAML bindings.
+                await SafeDispatcher.RunAsync(() =>
+                {
+                    RaisePropertyChanged("SubscribedGattClients");
+                    RaisePropertyChanged("HasSubscribedClients");
+                });
             }
-            RaisePropertyChanged("SubscribedGattClients");
-            RaisePropertyChanged("HasSubscribedClients");
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("SubscribedHidClientsChanged failed: " + e.Message);
+            }
         }
 
         /// <summary>

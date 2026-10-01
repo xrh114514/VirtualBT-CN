@@ -176,20 +176,32 @@ namespace GattServicesLibrary
             // This can be accomplished by calling BluetoothLEDevice.RequestAccessAsync(), or by getting the request on the UX thread.
             //
             // Note that subsequent calls to RequestAccessAsync or GetRequestAsync for the same device do not need to be called on the UX thread.
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunTaskAsync(
-                async () =>
-                {
-                    var request = await args.GetRequestAsync();
-
-                    Debug.WriteLine($"Characteristic_ReadRequested - Length {request.Length}, State: {request.State}, Offset: {request.Offset}");
-
-                    if (!ReadRequested(args.Session, request))
+            //
+            // Must use SafeDispatcher: CoreApplication.MainView.CoreWindow.Dispatcher
+            // is not safe from this thread-pool callback on Windows 11 24H2+ and
+            // fail-fasts the process (this is what crashed as soon as a phone
+            // connected and read the HID characteristics).
+            try
+            {
+                await SafeDispatcher.RunAsync(
+                    async () =>
                     {
-                        request.RespondWithValue(Value);
-                    }
+                        var request = await args.GetRequestAsync();
 
-                    deferral.Complete();
-                });
+                        Debug.WriteLine($"Characteristic_ReadRequested - Length {request.Length}, State: {request.State}, Offset: {request.Offset}");
+
+                        if (!ReadRequested(args.Session, request))
+                        {
+                            request.RespondWithValue(Value);
+                        }
+                    });
+            }
+            finally
+            {
+                // Always release the deferral. A hung deferral blocks the central's
+                // ATT transaction; an error response beats stalling (and beats crashing).
+                deferral.Complete();
+            }
         }
 
         protected virtual bool ReadRequested(GattSession session, GattReadRequest request)
@@ -214,47 +226,54 @@ namespace GattServicesLibrary
             // This can be accomplished by calling BluetoothLEDevice.RequestAccessAsync(), or by getting the request on the UX thread.
             //
             // Note that subsequent calls to RequestAccessAsync or GetRequestAsync for the same device do not need to be called on the UX thread.
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunTaskAsync(
-                async () =>
-                {
-                    // Grab the request
-                    var request = await args.GetRequestAsync();
-
-                    Debug.WriteLine($"Characteristic_WriteRequested - Length {request.Value.Length}, State: {request.State}, Offset: {request.Offset}");
-
-                    if (!WriteRequested(args.Session, request))
+            // Must use SafeDispatcher - see the comment in Characteristic_ReadRequested.
+            try
+            {
+                await SafeDispatcher.RunAsync(
+                    async () =>
                     {
-                        // Set the characteristic Value
-                        Value = request.Value;
+                        // Grab the request
+                        var request = await args.GetRequestAsync();
 
-                        // Respond with completed
-                        if (request.Option == GattWriteOption.WriteWithResponse)
+                        Debug.WriteLine($"Characteristic_WriteRequested - Length {request.Value.Length}, State: {request.State}, Offset: {request.Offset}");
+
+                        if (!WriteRequested(args.Session, request))
                         {
-                            Debug.WriteLine("Characteristic_WriteRequested: Completing request with responds");
-                            request.Respond();
+                            // Set the characteristic Value
+                            Value = request.Value;
+
+                            // Respond with completed
+                            if (request.Option == GattWriteOption.WriteWithResponse)
+                            {
+                                Debug.WriteLine("Characteristic_WriteRequested: Completing request with responds");
+                                request.Respond();
+                            }
+                            else
+                            {
+                                Debug.WriteLine("Characteristic_WriteRequested: Completing request without responds");
+                            }
+                        }
+
+                        // everything below this is debug. Should implement this on non-UI thread based on
+                        // https://github.com/Microsoft/Windows-task-snippets/blob/master/tasks/UI-thread-task-await-from-background-thread.md
+                        byte[] data;
+                        CryptographicBuffer.CopyToByteArray(Value, out data);
+
+                        if (data == null)
+                        {
+                            Debug.WriteLine("Characteristic_WriteRequested: Value after write complete was NULL");
                         }
                         else
                         {
-                            Debug.WriteLine("Characteristic_WriteRequested: Completing request without responds");
+                            Debug.WriteLine($"Characteristic_WriteRequested: New Value: {data.BytesToString()}");
                         }
-                    }
-
-                    // everything below this is debug. Should implement this on non-UI thread based on
-                    // https://github.com/Microsoft/Windows-task-snippets/blob/master/tasks/UI-thread-task-await-from-background-thread.md
-                    byte[] data;
-                    CryptographicBuffer.CopyToByteArray(Value, out data);
-
-                    if (data == null)
-                    {
-                        Debug.WriteLine("Characteristic_WriteRequested: Value after write complete was NULL");
-                    }
-                    else
-                    {
-                        Debug.WriteLine($"Characteristic_WriteRequested: New Value: {data.BytesToString()}");
-                    }
-
-                    deferral.Complete();
-                });
+                    });
+            }
+            finally
+            {
+                // Always release the deferral - see Characteristic_ReadRequested.
+                deferral.Complete();
+            }
         }
 
         protected virtual bool WriteRequested(GattSession session, GattWriteRequest request)

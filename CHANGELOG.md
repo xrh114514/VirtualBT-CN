@@ -4,7 +4,32 @@
 
 ---
 
-## [未发布 / Unreleased] — 2026-10-01
+## [1.0.1] — 2026-10-01
+
+### 修复 / Fixed
+
+- **中｜连接手机后闪退**（`0xc000027b` / `Windows.UI.Xaml.dll`，Win11 24H2+）：手机连上后会读取 HID 服务特征值（Report Map、HID Information 等），触发 GATT 读/写回调；而 `GattServicesLibrary/GenericGattCharacteristic.cs` 仍在后台线程调用 `CoreApplication.MainView.CoreWindow.Dispatcher`。与扫描闪退同一根因（见 1.0.0），上次只修了应用工程里的 20 处，下层库漏了。
+  **EN｜Crash as soon as a phone connects** (`0xc000027b` / `Windows.UI.Xaml.dll`, Win11 24H2+): connecting makes the phone read the HID service characteristics (Report Map, HID Information, …), which fires the GATT read/write callbacks in `GattServicesLibrary/GenericGattCharacteristic.cs` — those still called `CoreApplication.MainView.CoreWindow.Dispatcher` from a thread-pool thread. Same root cause as the scan crash (see 1.0.0); the earlier fix covered the 20 sites in the app project but missed the lower-layer library.
+  - 中｜`SafeDispatcher` 下沉到 `GattServicesLibrary.Helpers`，GATT 回调与应用共用同一份缓存；`BluetoothLEExplorer.Models.SafeDispatcher` 保留为门面，现有调用点不变。
+    **EN｜`SafeDispatcher` moved down into `GattServicesLibrary.Helpers`** so the GATT callbacks share the same cache; `BluetoothLEExplorer.Models.SafeDispatcher` remains as a facade, so existing call sites are unchanged.
+  - 中｜读/写请求的 `deferral.Complete()` 移入 `finally`：请求失败也不再悬挂，手机端的 ATT 事务不会卡死。
+    **EN｜`deferral.Complete()` moved into `finally`**: a failed request can no longer hang the phone's ATT transaction.
+
+- **中｜订阅变化回调的两处隐患**：`SubscribedHidClientsChanged` 在线程池线程直接 `RaisePropertyChanged`（XAML 绑定非 UI 线程更新）；`ObservableGattClient.FromIdAsync` 在设备查找失败时用 null 构造，`async void` 未捕获直接闪退。现已跳转 UI 线程通知、空值跳过、整体 try/catch。
+  **EN｜Two hazards in the subscribed-clients callback**: `SubscribedHidClientsChanged` raised `PropertyChanged` straight from a thread-pool thread (XAML binding update off the UI thread), and `ObservableGattClient.FromIdAsync` constructed around null when the device lookup failed — uncaught inside an `async void`, so the process died. Now marshalled to the UI thread, nulls skipped, whole handler guarded.
+
+### 变更 / Changed
+
+- 中｜启动脚本每次启动都刷新注册（`Add-AppxPackage -Register`）。原地覆盖应用文件后旧注册是失效的，应用会静默拒绝启动；注册指向别的目录或版本不一致时（例如解压了新版到新目录）先移除再注册，避免启动到旧构建。
+  **EN｜The launcher re-registers on every start** (`Add-AppxPackage -Register`). Replacing files under a registered loose package leaves the registration stale and the app silently refuses to start; when the registration points at a different folder or a different version (e.g. a newer copy extracted elsewhere) it is removed first so the stale build cannot be launched.
+- 中｜包版本号从上游的 `1.16.3.0` 改为与发布号一致的 `1.0.1.0`，便于在 Windows 设置里确认装的是哪一版。
+  **EN｜The package version is now `1.0.1.0`**, matching the release number, so the installed build is identifiable in Windows Settings.
+
+---
+
+## [1.0.0] — 2026-10-01
+
+首次发布 / First release of this fork.
 
 ### 新增 / Added
 
@@ -22,8 +47,8 @@
 - **中｜中英双语切换**（设置 → 语言）：标准 UWP `.resw` + `x:Uid` 资源化，214 条字符串 × 2 语言；切换后自动重启生效。
   **EN｜English / 中文 switch** (Settings → Language): standard UWP `.resw` + `x:Uid` localisation, 214 strings × 2 languages; applied by restarting the app.
 
-- **中｜一键启动脚本** `启动VirtualBT.bat`：自动安装缺失运行时、注册应用包、启动或置前窗口。
-  **EN｜One-click launcher** `启动VirtualBT.bat`: installs missing runtimes, registers the package, starts the app or focuses the window.
+- **中｜一键启动脚本** `启动VirtualBT.bat`：自动安装缺失运行时（.NET Native 1.6、`Microsoft.VCLibs.x86.14.00`）、注册应用包、启动或置前窗口。
+  **EN｜One-click launcher** `启动VirtualBT.bat`: installs missing runtimes (.NET Native 1.6, `Microsoft.VCLibs.x86.14.00`), registers the package, starts the app or focuses the window.
 
 - **中｜蓝牙状态感知的错误提示**：`RadioNotAvailable` 时自动检测蓝牙开关状态，给出针对性排错步骤。
   **EN｜Bluetooth-aware error messages**: on `RadioNotAvailable` the app checks the radio state and gives targeted steps.

@@ -40,6 +40,14 @@ namespace BluetoothLEExplorer.Models
         public static async Task<ObservableGattClient> FromIdAsync(string deviceId)
         {
             var leDevice = await BluetoothLEDevice.FromIdAsync(deviceId);
+            if (leDevice == null)
+            {
+                // Device vanished between the subscribe event and this lookup
+                // (or the id is not resolvable). Returning null is safe for the
+                // caller; constructing around null is not - it throws inside an
+                // async void and kills the process.
+                return null;
+            }
             return new ObservableGattClient(leDevice);
         }
 
