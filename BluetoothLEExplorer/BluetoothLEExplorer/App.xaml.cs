@@ -33,6 +33,14 @@ namespace BluetoothLEExplorer
             InitializeComponent();
             this.UnhandledException += App_UnhandledException;
 
+            // WinRT callback exceptions (GATT events, connection-status handlers,
+            // anything invoked from the BLE stack on a thread-pool thread) do NOT
+            // reach Application.UnhandledException - they are "stowed" and the
+            // process dies with 0xc000027b in Windows.UI.Xaml.dll. This event is
+            // the only place to see the real exception, and setting Propagate to
+            // false stops the crash so the app survives and we can diagnose.
+            Windows.ApplicationModel.Core.CoreApplication.UnhandledErrorDetected += App_UnhandledErrorDetected;
+
             this.Suspending += App_Suspending;
             this.Resuming += App_Resuming;
 
@@ -105,7 +113,42 @@ namespace BluetoothLEExplorer
 
         private void App_UnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
-            showDialog(e.Exception.Message + "\n\n" + e.Exception.StackTrace);
+            LogCrash("XAML UnhandledException", e.Exception);
+            // Keep the app alive - a dead process helps nobody.
+            e.Handled = true;
+        }
+
+        private void App_UnhandledErrorDetected(object sender, Windows.ApplicationModel.Core.UnhandledErrorDetectedEventArgs e)
+        {
+            try
+            {
+                // Propagate() re-raises the error as a catchable exception.
+                // Catching it here marks the error as handled, so the process
+                // does not terminate - without this the app just vanishes and
+                // the event log only shows 0xc000027b in Windows.UI.Xaml.dll.
+                e.UnhandledError.Propagate();
+                LogCrash("WinRT UnhandledErrorDetected", "Propagate() returned without throwing");
+            }
+            catch (Exception ex)
+            {
+                LogCrash("WinRT UnhandledErrorDetected", ex.ToString());
+            }
+        }
+
+        private static void LogCrash(string kind, object detail)
+        {
+            string text = "[" + DateTimeOffset.Now.ToString("o") + "] " + kind + "\r\n" + detail + "\r\n====\r\n";
+            try
+            {
+                Debug.WriteLine(text);
+                var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                string path = System.IO.Path.Combine(folder.Path, "unhandled-error.log");
+                System.IO.File.AppendAllText(path, text);
+            }
+            catch (Exception)
+            {
+                // Logging must never throw.
+            }
         }
 
         private async void showDialog(string content)

@@ -425,17 +425,32 @@ namespace BluetoothLEExplorer.Models
 
         private async void HidControlPoint_WriteRequested(GattLocalCharacteristic sender, GattWriteRequestedEventArgs args)
         {
+            // WinRT event handler on a thread-pool thread - guard it. The
+            // deferral must always be completed or the central's ATT write hangs.
+            var deferral = args.GetDeferral();
             try
             {
-                var deferral = args.GetDeferral();
-                var writeRequest = await args.GetRequestAsync();
-                Debug.WriteLine("Value written to HID Control Point: " + GetStringFromBuffer(writeRequest.Value));
+                // GetRequestAsync has to run on the UX thread (see the note in
+                // GenericGattCharacteristic.Characteristic_ReadRequested).
+                string logged = null;
+                await SafeDispatcher.RunAsync(async () =>
+                {
+                    var writeRequest = await args.GetRequestAsync();
+                    logged = GetStringFromBuffer(writeRequest.Value);
+                });
+                if (logged != null)
+                {
+                    Debug.WriteLine("Value written to HID Control Point: " + logged);
+                }
                 // Control point only supports WriteWithoutResponse.
-                deferral.Complete();
             }
             catch (Exception e)
             {
                 Debug.WriteLine("Failed to handle write to Hid Control Point due to: " + e.Message);
+            }
+            finally
+            {
+                deferral.Complete();
             }
         }
 
@@ -451,41 +466,51 @@ namespace BluetoothLEExplorer.Models
 
         private void HidKeyboardReport_SubscribedClientsChanged(GattLocalCharacteristic sender, object args)
         {
-            // Report the union of keyboard + mouse subscribers so the UI list
-            // shows every connected client regardless of which report it uses.
-            var all = new List<GattSubscribedClient>();
-            lock (m_lock)
+            // WinRT event handler on a thread-pool thread: an exception escaping
+            // here is stowed and kills the process (0xc000027b), so the whole
+            // body is guarded.
+            try
             {
-                if (m_hidKeyboardReport != null)
+                // Report the union of keyboard + mouse subscribers so the UI list
+                // shows every connected client regardless of which report it uses.
+                var all = new List<GattSubscribedClient>();
+                lock (m_lock)
                 {
-                    foreach (var c in m_hidKeyboardReport.SubscribedClients)
+                    if (m_hidKeyboardReport != null)
                     {
-                        all.Add(c);
-                    }
-                }
-                if (m_hidMouseReport != null)
-                {
-                    foreach (var c in m_hidMouseReport.SubscribedClients)
-                    {
-                        bool dup = false;
-                        foreach (var existing in all)
-                        {
-                            if (existing.Session.DeviceId.Id == c.Session.DeviceId.Id)
-                            {
-                                dup = true;
-                                break;
-                            }
-                        }
-                        if (!dup)
+                        foreach (var c in m_hidKeyboardReport.SubscribedClients)
                         {
                             all.Add(c);
                         }
                     }
+                    if (m_hidMouseReport != null)
+                    {
+                        foreach (var c in m_hidMouseReport.SubscribedClients)
+                        {
+                            bool dup = false;
+                            foreach (var existing in all)
+                            {
+                                if (existing.Session.DeviceId.Id == c.Session.DeviceId.Id)
+                                {
+                                    dup = true;
+                                    break;
+                                }
+                            }
+                            if (!dup)
+                            {
+                                all.Add(c);
+                            }
+                        }
+                    }
                 }
-            }
 
-            Debug.WriteLine("Number of clients now registered for HID notifications: " + all.Count);
-            SubscribedHidClientsChanged?.Invoke(all);
+                Debug.WriteLine("Number of clients now registered for HID notifications: " + all.Count);
+                SubscribedHidClientsChanged?.Invoke(all);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("SubscribedClientsChanged: " + e.Message);
+            }
         }
 
         private void ChangeKeyState(KeyEvent keyEvent, byte hidUsageScanCode)
@@ -603,40 +628,40 @@ namespace BluetoothLEExplorer.Models
             }
         }
 
-        private static string DescribeGattServiceError(BluetoothError error)
-        {
-            if (error == BluetoothError.RadioNotAvailable)
-            {
-                bool? radioOn = TryGetBluetoothRadioIsOn();
-                var parts = new List<string>();
-                parts.Add(Loc.Get("Str_HidRadioOff.Text"));
-                parts.Add("");
-                if (radioOn == false)
-                {
-                    parts.Add(Loc.Get("Str_HidRadioOff.Text"));
-                    parts.Add(Loc.Get("Str_HidRadioOffFix.Text"));
-                }
-                else if (radioOn == true)
-                {
-                    parts.Add(Loc.Get("Str_HidRadioOnStillFails.Text"));
-                    parts.Add(Loc.Get("Str_HidSteps.Text"));
-                }
-                else
-                {
-                    parts.Add(Loc.Get("Str_HidSteps.Text"));
-                }
-                parts.Add("");
-                parts.Add(Loc.Get("Str_HidNeedPeripheral.Text"));
-                return string.Join(Environment.NewLine, parts);
-            }
-            var other = new string[]
-            {
-                Loc.Get("Str_HidRadioOnStillFails.Text") + " " + error.ToString(),
-                "",
-                Loc.Get("Str_HidSteps.Text"),
-            };
-            return string.Join(Environment.NewLine, other);
-        }
+        private static string DescribeGattServiceError(BluetoothError error)
+        {
+            if (error == BluetoothError.RadioNotAvailable)
+            {
+                bool? radioOn = TryGetBluetoothRadioIsOn();
+                var parts = new List<string>();
+                parts.Add(Loc.Get("Str_HidRadioOff.Text"));
+                parts.Add("");
+                if (radioOn == false)
+                {
+                    parts.Add(Loc.Get("Str_HidRadioOff.Text"));
+                    parts.Add(Loc.Get("Str_HidRadioOffFix.Text"));
+                }
+                else if (radioOn == true)
+                {
+                    parts.Add(Loc.Get("Str_HidRadioOnStillFails.Text"));
+                    parts.Add(Loc.Get("Str_HidSteps.Text"));
+                }
+                else
+                {
+                    parts.Add(Loc.Get("Str_HidSteps.Text"));
+                }
+                parts.Add("");
+                parts.Add(Loc.Get("Str_HidNeedPeripheral.Text"));
+                return string.Join(Environment.NewLine, parts);
+            }
+            var other = new string[]
+            {
+                Loc.Get("Str_HidRadioOnStillFails.Text") + " " + error.ToString(),
+                "",
+                Loc.Get("Str_HidSteps.Text"),
+            };
+            return string.Join(Environment.NewLine, other);
+        }
 
 
 

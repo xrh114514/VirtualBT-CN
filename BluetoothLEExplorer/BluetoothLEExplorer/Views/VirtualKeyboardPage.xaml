@@ -40,18 +40,13 @@
                 <Visibility>Collapsed</Visibility>
             </converters:ValueWhenConverter.Otherwise>
         </converters:ValueWhenConverter>
-        
-        <converters:ValueWhenConverter x:Key="ConnectedWhenTrueConverter">
-            <converters:ValueWhenConverter.When>
-                <x:Boolean>True</x:Boolean>
-            </converters:ValueWhenConverter.When>
-            <converters:ValueWhenConverter.Value>
-                <models:LocalizedString x:Uid="Str_ConnectedLS" Value="已连接" />
-            </converters:ValueWhenConverter.Value>
-            <converters:ValueWhenConverter.Otherwise>
-                <models:LocalizedString x:Uid="Str_DisconnectedLS" Value="未连接" />
-            </converters:ValueWhenConverter.Otherwise>
-        </converters:ValueWhenConverter>
+
+        <!-- NOTE: do not feed a LocalizedString to a ValueWhenConverter that is
+             bound to a string property (e.g. TextBlock.Text). x:Bind casts the
+             converter result and the cast throws, killing the process. Bind a
+             string property instead (see ObservableGattClient.ConnectionText).
+             LocalizedString is only safe for object-typed targets like
+             Button.Content. -->
     </Page.Resources>
     
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -155,7 +150,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
                                 <TextBlock Text=": " Width="20" />
-                                <TextBlock Text="{x:Bind IsConnected, Mode=OneWay, Converter={StaticResource ConnectedWhenTrueConverter}}" />
+                                <TextBlock Text="{x:Bind ConnectionText, Mode=OneWay}" />
                             </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>

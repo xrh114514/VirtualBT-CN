@@ -4,7 +4,44 @@
 
 ---
 
+## [1.1.0] — 2026-10-01
+
+**连接手机后闪退的真正根因与最终修复。** v1.0.1 修的都是真问题，但不是闪退的原因；本节才是。
+**The real root cause of the crash-on-connect, and the final fix.** v1.0.1 fixed real bugs but not the crash; this section is the one that matters.
+
+### 修复 / Fixed
+
+- **中｜连接手机后闪退**（`0xc000027b` / `Windows.UI.Xaml.dll`，所有 Win11 版本）：真实异常是 **`System.InvalidCastException`**，发生在 x:Bind 编译绑定生成的 `VirtualKeyboardPage_obj13_Bindings.Update_IsConnected`。
+  「已连接 / 未连接」状态文本通过 `ValueWhenConverter` 取值 `LocalizedString` 对象，而 x:Bind 会把转换结果**强制转成 `string`** 赋给 `TextBlock.Text` —— 对象不是 string，强转即抛异常，进程死亡。
+  **EN｜Crash as soon as a phone connects** (`0xc000027b` / `Windows.UI.Xaml.dll`, any Win11 build): the real exception is **`System.InvalidCastException`** in the x:Bind compiled binding `VirtualKeyboardPage_obj13_Bindings.Update_IsConnected`.
+  The "Connected / Disconnected" text came from a `ValueWhenConverter` whose value is a `LocalizedString` **object**, while x:Bind **casts** the converter result to `string` for `TextBlock.Text` — the cast throws and the process dies.
+  - 中｜`ObservableGattClient` 新增 `ConnectionText`（`string`，经 `Loc.Get` 取资源），绑定改为 `Text="{x:Bind ConnectionText}"`，不再经过任何转换，也就无从强转。
+    **EN｜`ObservableGattClient.ConnectionText`** is a plain string (looked up with `Loc.Get`); the binding is now `Text="{x:Bind ConnectionText}"`, so there is no conversion and therefore no cast.
+  - 中｜扫描页的 开始/停止 按钮用同一模式但绑在 `Button.Content`（object）上，对象塞得进去、靠 `ToString()` 显示，所以一直没暴露；`LocalizedString` 的注释已写明这个限制。
+    **EN｜The scan page's Start/Stop buttons use the same pattern but bind to `Button.Content` (object)**, which accepts the object and renders via `ToString()` — that is why only the phone-connect path crashed. The limitation is now documented on `LocalizedString`.
+
+### 修复 / Fixed（连带排掉的隐患 / hazards removed along the way）
+
+- **中｜`ObservableGattClient` 的终末器在线程上调 WinRT**（`Dispose()`、退订事件）：.NET 终末器线程调 WinRT 会从 combase 抛 `E_NOTIMPL`，与 WER 报告的 `0x80004002` 吻合。已移除终末器——设备与包装对象互相引用，会一起被回收，无需终结。
+  **EN｜`ObservableGattClient`'s finalizer called into WinRT** (`Dispose()`, event unsubscribe) from the .NET finalizer thread, which throws `E_NOTIMPL` out of combase (matches the WER bucket's `0x80004002`). The finalizer is gone — the device and its wrapper reference each other and are collected together.
+- **中｜两处裸 WinRT 事件回调加保护**：`HidKeyboardReport_SubscribedClientsChanged`、`ConnectionStatusChanged` 原先无 try/catch，异常逃出即被 stowed 成 `0xc000027b`。
+  **EN｜Two bare WinRT event handlers guarded**: `HidKeyboardReport_SubscribedClientsChanged` and `ConnectionStatusChanged` had no try/catch, so any exception escaped and was stowed as `0xc000027b`.
+- **中｜`HidControlPoint_WriteRequested`**：`GetRequestAsync` 改在 UI 线程调用（该 API 要求 UX 线程），`deferral.Complete()` 移入 `finally`，请求失败不再让手机的 ATT 写悬挂。
+  **EN｜`HidControlPoint_WriteRequested`**: `GetRequestAsync` now runs on the UI thread (the API requires the UX thread) and `deferral.Complete()` is in a `finally`, so a failed request can no longer hang the central's ATT write.
+
+### 变更 / Changed
+
+- **中｜全局未捕获异常诊断**：接入 `CoreApplication.UnhandledErrorDetected`，WinRT 回调里的异常会写入应用本地目录的 `unhandled-error.log` 并被接住（不再闪退）；XAML 的 `UnhandledException` 同样记录并 `Handled = true`。定位本次根因靠的就是它。
+  **EN｜Global unhandled-error diagnostics**: `CoreApplication.UnhandledErrorDetected` logs WinRT callback exceptions to `unhandled-error.log` in the app's local folder and swallows them (no more vanishing); XAML's `UnhandledException` is logged and marked handled too. This is how the root cause was found.
+- 中｜包版本号 **1.1.0.0**。
+  **EN｜Package version 1.1.0.0**.
+
+---
+
 ## [1.0.1] — 2026-10-01
+
+> 中｜本节改动属实，但**并非闪退的原因**；真正根因见 [1.1.0]。
+> **EN｜These changes are real, but they were not the cause of the crash** — see [1.1.0] for the actual root cause.
 
 ### 修复 / Fixed
 

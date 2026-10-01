@@ -26,6 +26,25 @@ namespace BluetoothLEExplorer.Models
             {
                 m_isConnected = value;
                 OnPropertyChanged("IsConnected");
+                OnPropertyChanged("ConnectionText");
+            }
+        }
+
+        /// <summary>
+        /// Gets the localized connection state as a plain string.
+        /// The page binds TextBlock.Text (a string) to this. Do not bind a
+        /// converter that returns a <see cref="LocalizedString"/> to a string
+        /// property instead: x:Bind casts the converter result and a
+        /// LocalizedString object throws InvalidCastException, which killed
+        /// the process as soon as a phone connected.
+        /// </summary>
+        public string ConnectionText
+        {
+            get
+            {
+                return m_isConnected
+                    ? Loc.Get("Str_ConnectedLS.Value")
+                    : Loc.Get("Str_DisconnectedLS.Value");
             }
         }
 
@@ -58,11 +77,11 @@ namespace BluetoothLEExplorer.Models
             IsConnected = (m_leDevice.ConnectionStatus == BluetoothConnectionStatus.Connected);
         }
 
-        ~ObservableGattClient()
-        {
-            m_leDevice.ConnectionStatusChanged -= ConnectionStatusChanged;
-            m_leDevice.Dispose();
-        }
+        // NOTE: there is deliberately no finalizer here. Calling into WinRT
+        // (ConnectionStatusChanged -= , Dispose) from the .NET finalizer thread
+        // throws E_NOTIMPL out of combase.dll and kills the process - that was
+        // one of the connect-time crashes. The device and this wrapper reference
+        // each other and are collected together; nothing needs finalizing.
 
         bool IEquatable<ObservableGattClient>.Equals(ObservableGattClient other)
         {
@@ -76,7 +95,15 @@ namespace BluetoothLEExplorer.Models
 
         private void ConnectionStatusChanged(BluetoothLEDevice sender, object args)
         {
-            IsConnected = (sender.ConnectionStatus == BluetoothConnectionStatus.Connected);
+            // WinRT event handler on a thread-pool thread - guard it, see above.
+            try
+            {
+                IsConnected = (sender.ConnectionStatus == BluetoothConnectionStatus.Connected);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("ConnectionStatusChanged: " + e.Message);
+            }
         }
 
         private async void OnPropertyChanged(string propertyName)
