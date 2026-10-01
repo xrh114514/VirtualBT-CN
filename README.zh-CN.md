@@ -6,6 +6,8 @@
 
 > **English**：[README.md](README.md)
 >
+> **下载**：[GitHub Release](https://github.com/xrh114514/VirtualBT-CN/releases/latest) 提供免构建绿色包——解压后双击 `启动VirtualBT.bat` 即可使用。
+>
 > **使用说明**：见 [快速上手.md](快速上手.md)；详细排错见下文[疑难排错](#疑难排错)。
 >
 > **原项目**：[itsmikethetech/VirtualBT](https://github.com/itsmikethetech/VirtualBT) · [VirtualDrivers/VirtualBT](https://github.com/VirtualDrivers/VirtualBT)

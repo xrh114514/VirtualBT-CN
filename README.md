@@ -6,6 +6,8 @@ The interface supports switching between Chinese and English.
 
 > **中文**：[README.zh-CN.md](README.zh-CN.md)
 >
+> **Download**: prebuilt package on [GitHub Releases](https://github.com/xrh114514/VirtualBT-CN/releases/latest) — extract and double-click `启动VirtualBT.bat`.
+>
 > **Usage**: see [Quick-Start.md](Quick-Start.md); for detailed troubleshooting, see [Troubleshooting](#troubleshooting) below.
 >
 > **Upstream project**: [itsmikethetech/VirtualBT](https://github.com/itsmikethetech/VirtualBT) · [VirtualDrivers/VirtualBT](https://github.com/VirtualDrivers/VirtualBT)
